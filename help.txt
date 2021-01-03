@@ -1,0 +1,28 @@
+  /$$$$$$ /$$$$$$$$/$$$$$$$$/$$$$$$  /$$$$$$ 
+ /$$__  $|__  $$__| $$_____/$$__  $$/$$__  $$
+| $$  \ $$  | $$  | $$    | $$  \ $| $$  \ $$
+| $$$$$$$$  | $$  | $$$$$ | $$$$$$$| $$$$$$$$
+| $$__  $$  | $$  | $$__/ | $$__  $| $$__  $$
+| $$  | $$  | $$  | $$    | $$  | $| $$  | $$
+| $$  | $$  | $$  | $$    | $$  | $| $$  | $$
+|__/  |__/  |__/  |__/    |__/  |__|__/  |__/
+
+COMMANDS:
+  -->help
+        -show all commands in ATFAA TERMINAL
+  -->version
+        -shows the installed version of the terminal
+  -->cd (catalog)
+        -go to dictionary
+  -->color (color)
+        -all colors >> red, green, yellow, blue, magenta, cyan, white
+  -->clear
+        -clear all terminal
+  -->exit/close
+        -close ATFAA terminal
+  -->dir/ls
+        -shows folders and files in the current directory
+  -->proc
+        -shows running processes
+  -->tree (only for windows)
+        -shows directory structure as a tree
