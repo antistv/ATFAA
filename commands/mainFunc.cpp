@@ -7,8 +7,8 @@ string clearTabsAndSpaces(string line){
         if(make == false) {
             if(line[i] != ' ') {
                 deleted += line[i];
-                make = true;
-            } 
+                    make = true;
+                } 
         } else {
             deleted += line[i];
         }

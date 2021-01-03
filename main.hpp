@@ -7,19 +7,26 @@
 #include <stdlib.h> 
 #include <cstdlib>
 #include <cstdio> 
-#include <ncurses.h>
+
+#ifdef WIN32
+    //
+#else
+    #include <sys/stat.h>
+    #include <sys/types.h>
+#endif
 
 using namespace std;
 
-//Funkcje
 void color(string clr);
 void proc();
 void help();
 void lsAndDir();
-void clearTerminal();
+void clear();
 void treeWin();
 string clearTabsAndSpaces(string line);
 string getStringCommand(string line);
 void CDCommand(string container);
 void command();
-//cos nowego
+int main();
+void createFolder(string nameFolder);
+void deleteFolder(string nameFolderS);

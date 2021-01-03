@@ -1,31 +1,21 @@
 #include "main.hpp"
 
-string path = "";
 string version = "0.0.2";
+string path = "";
 string cmd = "";
 
 void command() {
     string arg;
     
-    printw("%s> ", path.c_str());
+    cout << path << "> ";
+    getline(cin, cmd);
 
-//Wczytywanie cmd
-    nocbreak();
-    echo();
-    int ch = getch();
-    while ( ch != '\n' ) {
-        cmd.push_back( ch );
-        ch = getch();
-    }
-
-//Wyszukiwanie komend
     if(cmd.size() > 0){
         cmd = clearTabsAndSpaces(cmd);
         arg = getStringCommand(cmd);
         cmd.erase(0, arg.length()+1);
 
         if(arg == "exit" || arg == "close") {
-            endwin();
             exit(0);
         } else if(arg == "color"){
             cmd = clearTabsAndSpaces(cmd);
@@ -34,7 +24,7 @@ void command() {
 
             color(arg);
         } else if(arg == "clear" || arg == "cls") {  
-            clearTerminal();
+            clear();
         } else if(arg == "cd") {
             CDCommand(cmd);
         } else if(arg == "help"){
@@ -44,11 +34,23 @@ void command() {
         } else if(arg == "tree") {
             treeWin();
         } else if(arg == "version" || arg == "v"){
-            printw("Version --> %s \n", version.c_str());
+            cout << "Version --> "<< version << '\n';
         } else if(arg == "proc") {
             proc();
+        } else if(arg == "mkdir"){
+            cmd = clearTabsAndSpaces(cmd);
+            arg = getStringCommand(cmd);
+            cmd.erase(0, arg.length()+1); 
+    
+            createFolder(arg);
+        } else if(arg == "deldir"){
+            cmd = clearTabsAndSpaces(cmd);
+            arg = getStringCommand(cmd);
+            cmd.erase(0, arg.length()+1); 
+    
+            deleteFolder(arg);
         } else {
-            printw("Command not found\n");
+            cout<<"Command not found"<<'\n';
         }
 
     }
@@ -56,13 +58,12 @@ void command() {
     command();
 }
 
-//Kompletnie niepotrzebna zmiana
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //WYWOŁANIE/////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-int main() { 
+int main() {  
 
     setlocale( LC_ALL, "pl_PL" );
 
@@ -79,18 +80,10 @@ int main() {
         path = getenv("HOME");
     #endif
 
-    initscr();
+    cout << "ATFAA Terminal " << version <<  '\n';
+    cout << "Copyright (c) ATFAA Corporation. All rights reserved"<<  '\n';
+    cout << "Type 'help' to get help." <<  '\n';
 
-    use_default_colors();
-    start_color(); 
-
-    printw("ATFAA Terminal %s \n", version.c_str());
-    printw("Copyright (c) ATFAA Corporation. All rights reserved\n");
-    printw("Type 'help' to get help.\n");
-    refresh();
-    beep();
-
-    command();
-    endwin();
+    command(); 
     return 0;   
  }
