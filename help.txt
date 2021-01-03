@@ -12,9 +12,9 @@ COMMANDS:
         -show all commands in ATFAA TERMINAL
   -->version
         -shows the installed version of the terminal
-  -->cd (catalog)
+  -->cd <catalog>
         -go to dictionary
-  -->color (color)
+  -->color <color>
         -all colors >> red, green, yellow, blue, magenta, cyan, white
   -->clear
         -clear all terminal
@@ -26,3 +26,7 @@ COMMANDS:
         -shows running processes
   -->tree (only for windows)
         -shows directory structure as a tree
+  -->mkdir <folder name>
+        -makes folder
+  -->deldir <folder name>
+        -removes folder 

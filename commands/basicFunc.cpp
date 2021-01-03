@@ -4,44 +4,29 @@ extern string path;
 
 void proc() {
     #ifdef WIN32
-        system("proc > system-proc.txt");
+        system("proc");
     #else
-        system("ps -U root -u root -N > system-proc.txt");
+        system("ps -U root -u root -N");
     #endif
-
-    string line;
-    fstream plik;
-    plik.open("system-proc.txt", ios::in);
-    if(plik.good() == true){
-        while(!plik.eof()) {
-            getline(plik, line);
-            printw("%s\n", line.c_str());
-        }
-    }
-    plik.close();
 }
 
-void lsAndDir() {
+void help(){
+    ifstream f("help.txt");
+    if (f.is_open())
+        cout << f.rdbuf();
+    f.close();
+    cout << '\n';
+}
+
+void lsAndDir(){
     #ifdef WIN32
-        system(("dir " + path + "> system-proc.txt").c_str());
+        system(("dir " + path).c_str());
     #else
-        system(("ls " + path + "> system-proc.txt").c_str());
+        system(("ls " + path).c_str());
     #endif
-
-    string line;
-    fstream plik;
-    plik.open("system-proc.txt", ios::in);
-    if(plik.good() == true){
-        while(!plik.eof()) {
-            getline(plik, line);
-            printw("%s ", line.c_str());
-        }
-    }
-    plik.close();
 }
 
-
-void clearTerminal(){
+void clear(){
     #ifdef WIN32
         system("cls");
     #else
@@ -51,22 +36,8 @@ void clearTerminal(){
 
 void treeWin(){
     #ifdef WIN32
-        system(("tree " + path + "> system-proc.txt").c_str());
+        system(("tree " + path).c_str());
     #else
-        printw("feature not available on linux\n");
+        cout<<"feature not available on linux"<<'\n';
     #endif
-}
-
-void help(){
-    string line;
-    fstream plik;
-
-    plik.open("help.txt", ios::in);
-    if(plik.good() == true){
-        while(!plik.eof()) {
-            getline(plik, line);
-            printw("%s\n", line.c_str());
-        }
-        plik.close();
-    }
 }

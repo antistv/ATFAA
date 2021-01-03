@@ -3,7 +3,6 @@
 extern string path;
 
 void CDCommand(string container) {
-    
     container = clearTabsAndSpaces(container);
     string popath="";
     popath=path;
@@ -20,7 +19,7 @@ void CDCommand(string container) {
         if(spr == true){
             path.erase(i, path.length()-i);
         } else {
-            printw("Can't be undone\n");
+            cout << "Can't be undone" << '\n';
         }
     } else if(container == "/" || container == "\\") {
         #ifdef WIN32
@@ -32,21 +31,20 @@ void CDCommand(string container) {
         #ifdef WIN32
             popath = popath+'\\'+container;
             if(access( popath.c_str(), F_OK ) == -1) {
-                printw("This path is not exist\n");
+                cout<<"This path is not exist"<<'\n';
             } else {
                 path = popath;
             }
         #else
             popath = popath+"/"+container;
             if(access( popath.c_str(), F_OK ) == -1){
-                printw("This path is not exist\n");
+                cout<<"This path is not exist"<<'\n';
             } else {
                 path = popath;
             }
         #endif
     } else {
-        //wypisz path
-        printw("%s\n", path.c_str());
+        cout<<path<<'\n';
     }
 
     command();
