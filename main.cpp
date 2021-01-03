@@ -1,6 +1,5 @@
 #include "main.hpp"
 
-//jako taki
 
 string path = "";
 string version = "0.0.2";
