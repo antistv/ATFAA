@@ -22,3 +22,4 @@ string clearTabsAndSpaces(string line);
 string getStringCommand(string line);
 void CDCommand(string container);
 void command();
+//cos nowego

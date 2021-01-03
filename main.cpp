@@ -1,6 +1,7 @@
 #include "main.hpp"
 
-//cos innego
+//jako taki
+
 string path = "";
 string version = "0.0.2";
 string cmd = "";
