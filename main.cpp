@@ -5,57 +5,84 @@ string path = "";
 string cmd = "";
 
 void command() {
-    string arg;
+    string arg, arg2;
     
-    cout << path << "> ";
-    getline(cin, cmd);
+    while (true) {
+        cout << path << "> ";
+        getline(cin, cmd);
 
-    if(cmd.size() > 0){
-        cmd = clearTabsAndSpaces(cmd);
-        arg = getStringCommand(cmd);
-        cmd.erase(0, arg.length()+1);
-
-        if(arg == "exit" || arg == "close") {
-            exit(0);
-        } else if(arg == "color"){
+        if(cmd.size() > 0){
             cmd = clearTabsAndSpaces(cmd);
             arg = getStringCommand(cmd);
-            cmd.erase(0, arg.length()+1);   
+            cmd.erase(0, arg.length()+1);
 
-            color(arg);
-        } else if(arg == "clear" || arg == "cls") {  
-            clear();
-        } else if(arg == "cd") {
-            CDCommand(cmd);
-        } else if(arg == "help"){
-            help();
-        } else if(arg == "dir" || arg == "ls" || arg == "list") {
-            lsAndDir();
-        } else if(arg == "tree") {
-            treeWin();
-        } else if(arg == "version" || arg == "v"){
-            cout << "Version --> "<< version << '\n';
-        } else if(arg == "proc") {
-            proc();
-        } else if(arg == "mkdir"){
-            cmd = clearTabsAndSpaces(cmd);
-            arg = getStringCommand(cmd);
-            cmd.erase(0, arg.length()+1); 
-    
-            createFolder(arg);
-        } else if(arg == "deldir"){
-            cmd = clearTabsAndSpaces(cmd);
-            arg = getStringCommand(cmd);
-            cmd.erase(0, arg.length()+1); 
-    
-            deleteFolder(arg);
-        } else {
-            cout<<"Command not found"<<'\n';
+            if(arg == "exit" || arg == "close") {
+                exit(0);
+            } else if(arg == "color"){
+                cmd = clearTabsAndSpaces(cmd);
+                arg = getStringCommand(cmd);
+                cmd.erase(0, arg.length()+1);   
+
+                color(arg);
+            } else if(arg == "clear" || arg == "cls") {  
+                clear();
+            } else if(arg == "cd") {
+                CDCommand(cmd);
+            } else if(arg == "help"){
+                help();
+            } else if(arg == "dir" || arg == "ls" || arg == "list") {
+                lsAndDir();
+            } else if(arg == "tree") {
+                treeWin();
+            } else if(arg == "version" || arg == "v"){
+                cout << "Version --> "<< version << '\n';
+            } else if(arg == "proc") {
+                proc();
+            } else if(arg == "mkdir"){
+                cmd = clearTabsAndSpaces(cmd);
+                arg = getStringCommand(cmd);
+                cmd.erase(0, arg.length()+1); 
+        
+                createFolder(arg);
+            } else if(arg == "deldir"){
+                cmd = clearTabsAndSpaces(cmd);
+                arg = getStringCommand(cmd);
+                cmd.erase(0, arg.length()+1); 
+        
+                deleteFolder(arg);
+            } else if(arg == "rndir"){
+                cmd = clearTabsAndSpaces(cmd);
+                arg = getStringCommand(cmd);
+                cmd.erase(0, arg.length()+1); 
+                arg2 = getStringCommand(cmd);
+                cmd.erase(0, arg2.length()+1); 
+
+                renameDir(arg, arg2);
+            } else if(arg == "mkfile"){
+                cmd = clearTabsAndSpaces(cmd);
+                arg = getStringCommand(cmd);
+                cmd.erase(0, arg.length()+1); 
+        
+                createFile(arg);
+            } else if(arg == "delfile"){
+                cmd = clearTabsAndSpaces(cmd);
+                arg = getStringCommand(cmd);
+                cmd.erase(0, arg.length()+1); 
+        
+                deleteFile(arg);
+            } else if(arg == "rnfile"){
+                cmd = clearTabsAndSpaces(cmd);
+                arg = getStringCommand(cmd);
+                cmd.erase(0, arg.length()+1); 
+                arg2 = getStringCommand(cmd);
+                cmd.erase(0, arg2.length()+1); 
+
+                renameFile(arg, arg2);
+            } else {
+                cout<<"Command not found"<<'\n';
+            }
         }
-
     }
-    
-    command();
 }
 
 
