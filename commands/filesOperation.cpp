@@ -5,6 +5,7 @@ extern string path;
 void createFolder(string nameFolder) {
     #ifdef WIN32
         system(("mkdir " + path + "\\" + nameFolder).c_str());
+        cout << "Folder are created" << '\n';
     #else
         int status;
         status = system(("mkdir -p " + path + '/' + nameFolder).c_str());
@@ -18,6 +19,7 @@ void createFolder(string nameFolder) {
 void deleteFolder(string nameFolderS) {
     #ifdef WIN32
         system(("rmdir /s /q " + path + "\\" + nameFolderS).c_str());
+        cout << "File are deleted" << '\n';
     #else
         int status;
         status = system(("rm -r /" + path + '/' + nameFolderS).c_str());
@@ -31,6 +33,7 @@ void deleteFolder(string nameFolderS) {
 void renameDir(string nameFolderToRename, string newNameFolder){
     #ifdef WIN32
         system(("rename " + path + "\\" + nameFolderToRename + " " + newNameFolder).c_str());
+        cout << "Folder are renamed" << '\n';
     #else
         int status;
         status = system(("mv " + path + '/' + nameFolderToRename + " " + path + '/' + newNameFolder).c_str());
@@ -45,7 +48,10 @@ void renameDir(string nameFolderToRename, string newNameFolder){
 
 void createFile(string nameFile) {
     #ifdef WIN32
-        system(("mkdir " + path + "\\" + nameFile).c_str());
+        //system(("mkdir " + path + "\\" + nameFile).c_str());
+        ofstream outfile (path+"\\"+nameFile);
+        outfile.close();
+        cout << "File are created" << '\n';
     #else
         int status;
         status = system(("mkdir -p " + path + '/' + nameFile).c_str());
@@ -58,7 +64,8 @@ void createFile(string nameFile) {
 
 void deleteFile(string nameFileS) {
     #ifdef WIN32
-        system(("rmdir /s /q " + path + "\\" + nameFileS).c_str());
+        system(("del /f " + path + "\\" + nameFileS).c_str());
+        cout << "File are deleted" << '\n';
     #else
         int status;
         status = system(("rm -r /" + path + '/' + nameFileS).c_str());
@@ -72,6 +79,7 @@ void deleteFile(string nameFileS) {
 void renameFile(string fileToRename, string newNameOfFile){
     #ifdef WIN32
         system(("rename " + path + "\\" + fileToRename + " " + newNameOfFile).c_str());
+        cout << "File are renamed" << '\n';
     #else
         int status;
         status = system(("mv " + path + '/' + fileToRename + " " + path + '/' + newNameOfFile).c_str());
