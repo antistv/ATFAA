@@ -30,3 +30,11 @@ COMMANDS:
         -makes folder
   -->deldir <folder name>
         -removes folder 
+  -->rndir <old folder name> <new folder name>
+        -renames folder 
+  -->mkfile <file name>
+        -makes file
+  -->delfile <file name>
+        -removes file 
+  -->rnfile <old file name> <new file name>
+        -renames file 

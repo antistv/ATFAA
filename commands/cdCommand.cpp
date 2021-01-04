@@ -46,6 +46,4 @@ void CDCommand(string container) {
     } else {
         cout<<path<<'\n';
     }
-
-    command();
 }

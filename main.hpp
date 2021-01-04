@@ -30,3 +30,7 @@ void command();
 int main();
 void createFolder(string nameFolder);
 void deleteFolder(string nameFolderS);
+void renameDir(string nameFolderToRename, string newNameFolder);
+void createFile(string nameFile);
+void deleteFile(string nameFileS);
+void renameFile(string fileToRename, string newNameOfFile);
