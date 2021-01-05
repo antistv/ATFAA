@@ -46,6 +46,6 @@ void terminal() {
     #ifdef WIN32
         system(".\\ATFAA");
     #else
-        system("./ATFAA";
+        system("./ATFAA");
     #endif
 }

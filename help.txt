@@ -37,4 +37,6 @@ COMMANDS:
   -->delfile <file name>
         -removes file 
   -->rnfile <old file name> <new file name>
-        -renames file 
+        -renames file
+  -->cmd 
+        -this command open new termianal
