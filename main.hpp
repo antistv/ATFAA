@@ -23,6 +23,7 @@ void help();
 void lsAndDir();
 void clear();
 void treeWin();
+void terminal();
 string clearTabsAndSpaces(string line);
 string getStringCommand(string line);
 void CDCommand(string container);

@@ -78,6 +78,8 @@ void command() {
                 cmd.erase(0, arg2.length()+1); 
 
                 renameFile(arg, arg2);
+            } else if(arg == "cmd" || arg == "terminal" || arg == "console") {
+                terminal();
             } else {
                 cout<<"Command not found"<<'\n';
             }
