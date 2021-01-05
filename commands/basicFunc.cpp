@@ -10,7 +10,7 @@ void proc() {
     #endif
 }
 
-void help(){
+void help() {
     ifstream f("help.txt");
     if (f.is_open())
         cout << f.rdbuf();
@@ -18,7 +18,7 @@ void help(){
     cout << '\n';
 }
 
-void lsAndDir(){
+void lsAndDir() {
     #ifdef WIN32
         system(("dir " + path).c_str());
     #else
@@ -26,7 +26,7 @@ void lsAndDir(){
     #endif
 }
 
-void clear(){
+void clear() {
     #ifdef WIN32
         system("cls");
     #else
@@ -34,10 +34,18 @@ void clear(){
     #endif
 }
 
-void treeWin(){
+void treeWin() {
     #ifdef WIN32
         system(("tree " + path).c_str());
     #else
         cout<<"feature not available on linux"<<'\n';
+    #endif
+}
+
+void terminal() {
+    #ifdef WIN32
+        system(".\\ATFAA");
+    #else
+        system("./ATFAA";
     #endif
 }
