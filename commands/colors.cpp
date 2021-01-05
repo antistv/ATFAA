@@ -1,6 +1,6 @@
 #include "../main.hpp"
 
-void color(string clr) {
+void Colors :: color(string clr) {
     if(clr == "red") {
         cout << "\x1B[31m\031\t\t" << '\n';
     } else if(clr == "green") {

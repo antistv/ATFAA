@@ -2,7 +2,7 @@
 
 extern string path;
 
-void proc() {
+void BasicFunc :: proc() {
     #ifdef WIN32
         system("proc");
     #else
@@ -10,7 +10,7 @@ void proc() {
     #endif
 }
 
-void help() {
+void BasicFunc :: help() {
     ifstream f("help.txt");
     if (f.is_open())
         cout << f.rdbuf();
@@ -18,7 +18,7 @@ void help() {
     cout << '\n';
 }
 
-void lsAndDir() {
+void BasicFunc :: lsAndDir() {
     #ifdef WIN32
         system(("dir " + path).c_str());
     #else
@@ -26,7 +26,7 @@ void lsAndDir() {
     #endif
 }
 
-void clear() {
+void BasicFunc :: clear() {
     #ifdef WIN32
         system("cls");
     #else
@@ -34,7 +34,7 @@ void clear() {
     #endif
 }
 
-void treeWin() {
+void BasicFunc :: treeWin() {
     #ifdef WIN32
         system(("tree " + path).c_str());
     #else
@@ -42,7 +42,7 @@ void treeWin() {
     #endif
 }
 
-void terminal() {
+void BasicFunc :: terminal() {
     #ifdef WIN32
         system(".\\ATFAA");
     #else

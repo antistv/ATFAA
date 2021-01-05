@@ -2,7 +2,7 @@
 
 extern string path;
 
-void createFolder(string nameFolder) {
+void FilesOperation :: createFolder(string nameFolder) {
     #ifdef WIN32
         system(("mkdir " + path + "\\" + nameFolder).c_str());
         cout << "Folder are created" << '\n';
@@ -16,7 +16,7 @@ void createFolder(string nameFolder) {
     #endif
 }
 
-void deleteFolder(string nameFolderS) {
+void FilesOperation :: deleteFolder(string nameFolderS) {
     #ifdef WIN32
         system(("rmdir /s /q " + path + "\\" + nameFolderS).c_str());
         cout << "File are deleted" << '\n';
@@ -30,7 +30,7 @@ void deleteFolder(string nameFolderS) {
     #endif
 }
 
-void renameDir(string nameFolderToRename, string newNameFolder){
+void FilesOperation :: renameDir(string nameFolderToRename, string newNameFolder){
     #ifdef WIN32
         system(("rename " + path + "\\" + nameFolderToRename + " " + newNameFolder).c_str());
         cout << "Folder are renamed" << '\n';
@@ -46,7 +46,7 @@ void renameDir(string nameFolderToRename, string newNameFolder){
 
 //FILE
 
-void createFile(string nameFile) {
+void FilesOperation :: createFile(string nameFile) {
     #ifdef WIN32
         //system(("mkdir " + path + "\\" + nameFile).c_str());
         ofstream outfile (path+"\\"+nameFile);
@@ -62,7 +62,7 @@ void createFile(string nameFile) {
     #endif
 }
 
-void deleteFile(string nameFileS) {
+void FilesOperation :: deleteFile(string nameFileS) {
     #ifdef WIN32
         system(("del /f " + path + "\\" + nameFileS).c_str());
         cout << "File are deleted" << '\n';
@@ -76,7 +76,7 @@ void deleteFile(string nameFileS) {
     #endif
 }
 
-void renameFile(string fileToRename, string newNameOfFile){
+void FilesOperation :: renameFile(string fileToRename, string newNameOfFile){
     #ifdef WIN32
         system(("rename " + path + "\\" + fileToRename + " " + newNameOfFile).c_str());
         cout << "File are renamed" << '\n';

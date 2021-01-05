@@ -1,6 +1,6 @@
 #include "../main.hpp"
 
-string clearTabsAndSpaces(string line){
+string MainFunc :: clearTabsAndSpaces(string line){
     string deleted="";
     bool make = false;
     for (int i = 0; i < line.size(); ++i) {
@@ -16,7 +16,7 @@ string clearTabsAndSpaces(string line){
     return deleted;
 }
 
-string getStringCommand(string line) {
+string MainFunc :: getStringCommand(string line) {
     string command = "";
     for(int i=0; i<line.size(); ++i){
         if(line[i] == ' '){
