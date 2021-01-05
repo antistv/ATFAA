@@ -2,10 +2,10 @@
 
 extern string path;
 
-void CDCommand(string container) {
-    container = clearTabsAndSpaces(container);
-    string popath="";
-    popath=path;
+void CDcom :: CDCommand(string container) {
+    popath = path;
+    MainFunc obj;
+    container = obj.clearTabsAndSpaces(container);
 
     if(container == "..") {
         bool spr = false;

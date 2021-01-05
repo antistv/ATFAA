@@ -17,21 +17,41 @@
 
 using namespace std;
 
-void color(string clr);
-void proc();
-void help();
-void lsAndDir();
-void clear();
-void treeWin();
-void terminal();
-string clearTabsAndSpaces(string line);
-string getStringCommand(string line);
-void CDCommand(string container);
-void command();
+class BasicFunc{
+    public:
+        void proc();
+        void help();
+        void lsAndDir();
+        void clear();
+        void treeWin();
+        void terminal();
+};
+
+class CDcom {
+    public:
+        void CDCommand(string container);
+        string popath="";
+};
+
+class Colors {
+    public:
+        void color(string clr);
+};
+
+class FilesOperation{
+    public:
+        void createFolder(string nameFolder);
+        void deleteFolder(string nameFolderS);
+        void renameDir(string nameFolderToRename, string newNameFolder);
+        void createFile(string nameFile);
+        void deleteFile(string nameFileS);
+        void renameFile(string fileToRename, string newNameOfFile);
+};
+
+class MainFunc {
+  public:
+    string clearTabsAndSpaces(string line);
+    string getStringCommand(string line);
+};
+
 int main();
-void createFolder(string nameFolder);
-void deleteFolder(string nameFolderS);
-void renameDir(string nameFolderToRename, string newNameFolder);
-void createFile(string nameFile);
-void deleteFile(string nameFileS);
-void renameFile(string fileToRename, string newNameOfFile);
