@@ -1,4 +1,4 @@
-#include "../main.hpp"
+#include "commands-Set.hpp"
 
 string MainFunc :: clearTabsAndSpaces(string line){
     string deleted="";
