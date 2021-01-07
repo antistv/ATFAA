@@ -5,11 +5,10 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 
-#include "../main-win.hpp"
 
 using namespace std;
 
 class KeybordFunc{
     public:
-        void keyboard(sf::Event event, sf::Text text);
+        void keyboard();
 };
