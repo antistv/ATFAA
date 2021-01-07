@@ -21,7 +21,7 @@ int main(){
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
             
-            useKeyboard.keyboard(event, text);
+            useKeyboard.keyboard();
 
             if (event.type == sf::Event::Closed){
                 window.close();
