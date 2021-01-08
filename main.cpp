@@ -30,7 +30,6 @@ int main() {
     CDcom cd;
     FilesOperation filesOperationFunc;
     Colors colorFunc;
-
     MainWindow window;
 
     string arg, arg2;

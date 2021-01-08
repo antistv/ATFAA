@@ -11,4 +11,5 @@ using namespace std;
 class KeybordFunc{
     public:
         void keyboard();
+        void checkEdge();
 };

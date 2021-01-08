@@ -1,10 +1,15 @@
 #include "useKeyboard.hpp"
 
-extern sf::Event event;
-extern sf::Text text;
+extern string activeTextS;
+extern string wrireTextS;
+extern sf::Text activeText;
+extern sf::Text wrireText;
 extern sf::Font font;
-extern string wrireText;
-extern string activeText;
+extern sf::Event event;
+extern string command;
+extern string countingEnter;
+extern sf::RenderWindow window;
+
 
 map<short, char> letterMap = { pair<short, char>(32, ' '),pair<short, char>(33, '!'),pair<short, char>(34, '"'),pair<short, char>(35, '#'),pair<short, char>(36, '$'),pair<short, char>(37, '%'),pair<short, char>(38, '&'),pair<short, char>(39, '\''),pair<short, char>(40, '('),pair<short, char>(41, ')'),pair<short, char>(42, '*'),pair<short, char>(43, '+'),pair<short, char>(44, ','),pair<short, char>(45, '-'),pair<short, char>(46, '.'),pair<short, char>(47, '/'),pair<short, char>(48, '0'),pair<short, char>(49, '1'),pair<short, char>(50, '2'),pair<short, char>(51, '3'),pair<short, char>(52, '4'),pair<short, char>(53, '5'),pair<short, char>(54, '6'),pair<short, char>(55, '7'),pair<short, char>(56, '8'),pair<short, char>(57, '9'),pair<short, char>(58, ':'),pair<short, char>(59, ';'),pair<short, char>(60, '<'),pair<short, char>(61, '='),pair<short, char>(62, '>'),pair<short, char>(63, '?'),pair<short, char>(64, '@')
 ,pair<short, char>(65, 'A'), pair<short, char>(66, 'B'), pair<short, char>(67, 'C'), pair<short, char>(68, 'D'), pair<short, char>(69, 'E'), pair<short, char>(70, 'F'), pair<short, char>(71, 'G'), pair<short, char>(72, 'H'), pair<short, char>(73, 'I'), pair<short, char>(74, 'J'), pair<short, char>(75, 'K'), pair<short, char>(76, 'L'), pair<short, char>(77, 'M'), pair<short, char>(78, 'N'), pair<short, char>(79, 'O'), pair<short, char>(80, 'P'), pair<short, char>(81, 'Q'), pair<short, char>(82, 'R'), pair<short, char>(83, 'S'), pair<short, char>(84, 'T'), pair<short, char>(85, 'U'), pair<short, char>(86, 'V'), pair<short, char>(87, 'W'), pair<short, char>(88, 'X'), pair<short, char>(89, 'Y'), pair<short, char>(90, 'Z')
@@ -15,16 +20,31 @@ map<short, char> letterMap = { pair<short, char>(32, ' '),pair<short, char>(33, 
 void KeybordFunc::keyboard() {
     if (event.type == sf::Event::TextEntered) {
         if(event.text.unicode == 8){
-            activeText.erase(activeText.length()-1, 1);
-            text.setString(wrireText+activeText);
+            activeTextS.erase(activeTextS.length()-1, 1);
+            activeText.setString(countingEnter+activeTextS);
         } else if(event.text.unicode == 13){
-            wrireText += activeText;
-            wrireText += '\n';
-            activeText="";
-            text.setString(wrireText+activeText);
+            wrireTextS += activeTextS;
+            wrireTextS += '\n';
+            countingEnter += '\n';
+            activeTextS="";
+            wrireText.setString(wrireTextS);
+            //Wysłanie komendy
+            command = "";
+            activeText.setString(countingEnter+activeTextS);
         } else {
-            activeText += letterMap[event.text.unicode];
-            text.setString(wrireText+activeText);
+            activeTextS += letterMap[event.text.unicode];
+            command += letterMap[event.text.unicode];
+            activeText.setString(countingEnter+activeTextS);
         }
+    }
+}
+
+void KeybordFunc::checkEdge(){
+    if (activeText.getLocalBounds().width >= window.getSize().x-10 ) { 
+        wrireTextS += activeTextS+'\n';
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = "";
+        activeText.setString(countingEnter+activeTextS);
     }
 }
