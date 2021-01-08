@@ -2,6 +2,7 @@
 
 extern sf::Event event;
 extern sf::Text text;
+extern sf::Font font;
 extern string wrireText;
 extern string activeText;
 

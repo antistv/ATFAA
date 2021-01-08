@@ -31,9 +31,15 @@ int main() {
     FilesOperation filesOperationFunc;
     Colors colorFunc;
 
+    MainWindow window;
+
     string arg, arg2;
 
+
+    window.mainWindow();
+    /*
     while (true) {
+        
         cout << path << "> ";
         getline(cin, cmd);
         if(cmd.size() > 0){
@@ -110,7 +116,9 @@ int main() {
                 cout<<"Command not found"<<'\n';
             }
         }
-    }
+        
 
+    }
+*/
     return 0;   
  }

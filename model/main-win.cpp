@@ -1,20 +1,25 @@
 #include "main-win.hpp"
-#include <iostream>
 
-sf::RenderWindow window(sf::VideoMode(1200, 720), "ATFAA TERMINAL", sf::Style::Default);
+string activeText;
+string wrireText;
+sf::Text text;
+sf::Font font;
+sf::Event event;
 
-int main(){
+void MainWindow::mainWindow(){
+    sf::RenderWindow window(sf::VideoMode(1200, 720), "ATFAA TERMINAL", sf::Style::Default);
+
     KeybordFunc useKeyboard;
 
     window.setVerticalSyncEnabled(true);
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(24);
 
-    if(!font.loadFromFile("keyboard/fonts/arial.ttf")){
+    if(!font.loadFromFile("/keyboard/fonts/arial.ttf")){
         cout << "error to load font";
     }
 
     text.setFont(font);
-    text.setStyle(sf::Text::Bold);
+    text.setStyle(sf::Text::Italic);
     text.setFillColor(sf::Color::Red);
     text.setCharacterSize(30);
 
