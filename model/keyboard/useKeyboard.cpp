@@ -1,14 +1,18 @@
 #include "useKeyboard.hpp"
+#include"../../commands/commands-Set.hpp"
 
 extern string activeTextS;
 extern string wrireTextS;
 extern sf::Text activeText;
 extern sf::Text wrireText;
-extern sf::Font font;
 extern sf::Event event;
 extern string command;
 extern string countingEnter;
 extern sf::RenderWindow window;
+
+extern string path;
+
+OperateCmd operation;
 
 
 map<short, char> letterMap = { pair<short, char>(32, ' '),pair<short, char>(33, '!'),pair<short, char>(34, '"'),pair<short, char>(35, '#'),pair<short, char>(36, '$'),pair<short, char>(37, '%'),pair<short, char>(38, '&'),pair<short, char>(39, '\''),pair<short, char>(40, '('),pair<short, char>(41, ')'),pair<short, char>(42, '*'),pair<short, char>(43, '+'),pair<short, char>(44, ','),pair<short, char>(45, '-'),pair<short, char>(46, '.'),pair<short, char>(47, '/'),pair<short, char>(48, '0'),pair<short, char>(49, '1'),pair<short, char>(50, '2'),pair<short, char>(51, '3'),pair<short, char>(52, '4'),pair<short, char>(53, '5'),pair<short, char>(54, '6'),pair<short, char>(55, '7'),pair<short, char>(56, '8'),pair<short, char>(57, '9'),pair<short, char>(58, ':'),pair<short, char>(59, ';'),pair<short, char>(60, '<'),pair<short, char>(61, '='),pair<short, char>(62, '>'),pair<short, char>(63, '?'),pair<short, char>(64, '@')
@@ -20,15 +24,26 @@ map<short, char> letterMap = { pair<short, char>(32, ' '),pair<short, char>(33, 
 void KeybordFunc::keyboard() {
     if (event.type == sf::Event::TextEntered) {
         if(event.text.unicode == 8){
-            activeTextS.erase(activeTextS.length()-1, 1);
-            activeText.setString(countingEnter+activeTextS);
+            if(command.length() > 0){
+                activeTextS.erase(activeTextS.length()-1, 1);
+                command.erase(command.length()-1, 1);
+                activeText.setString(countingEnter+activeTextS);
+            } else {
+                wrireTextS += "No letter to delete\n";
+                countingEnter += '\n';
+                activeTextS =path + ">";
+                activeText.setString(countingEnter+activeTextS);
+                wrireText.setString(wrireTextS);
+            }
         } else if(event.text.unicode == 13){
             wrireTextS += activeTextS;
+            wrireText.setString(wrireTextS);
             wrireTextS += '\n';
             countingEnter += '\n';
-            activeTextS="";
-            wrireText.setString(wrireTextS);
             //Wysłanie komendy
+                operation.runCommand(command);
+                cout << command << "--" << '\n';
+            activeTextS=path+"> ";
             command = "";
             activeText.setString(countingEnter+activeTextS);
         } else {
@@ -40,7 +55,7 @@ void KeybordFunc::keyboard() {
 }
 
 void KeybordFunc::checkEdge(){
-    if (activeText.getLocalBounds().width >= window.getSize().x-10 ) { 
+    if (activeText.getLocalBounds().width >= window.getSize().x-20 ) { 
         wrireTextS += activeTextS+'\n';
         wrireText.setString(wrireTextS);
         countingEnter += '\n';

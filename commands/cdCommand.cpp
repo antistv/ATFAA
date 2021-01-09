@@ -1,6 +1,12 @@
 #include "commands-Set.hpp"
+#include <SFML/Graphics.hpp>
 
 extern string path;
+extern sf::Text activeText;
+extern sf::Text wrireText;
+extern string countingEnter;
+extern string activeTextS;
+extern string wrireTextS;
 
 void CDcom :: CDCommand(string container) {
     popath = path;
@@ -31,7 +37,11 @@ void CDcom :: CDCommand(string container) {
         if(spr == true){
             path.erase(i, path.length()-i);
         } else {
-            cout << "Can't be undone" << '\n';
+            wrireTextS += "Can't be undone\n";
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
         }
     } else if(container == "/" || container == "\\") {
         #ifdef WIN32
@@ -41,21 +51,31 @@ void CDcom :: CDCommand(string container) {
         #endif
     } else if(container.length()>0) {
         #ifdef WIN32
+            for(int i=0; i<container.length(); ++i) {
+                if(container[i] == '/') container[i] = '\\';
+            }
             popath = popath+'\\'+container;
+
             if(access( popath.c_str(), F_OK ) == -1) {
-                cout<<"This path is not exist"<<'\n';
+                wrireTextS += "This path is not exist\n";
+                wrireText.setString(wrireTextS);
+                countingEnter += '\n';
+                activeTextS = path+">";
+                activeText.setString(countingEnter+activeTextS);
             } else {
                 path = popath;
             }
         #else
             popath = popath+"/"+container;
             if(access( popath.c_str(), F_OK ) == -1){
-                cout<<"This path is not exist"<<'\n';
+                wrireTextS += "This path is not exist\n";
+                wrireText.setString(wrireTextS);
+                countingEnter += '\n';
+                activeTextS = path+">";
+                activeText.setString(countingEnter+activeTextS);
             } else {
                 path = popath;
             }
         #endif
-    } else {
-        cout<<path<<'\n';
     }
 }
