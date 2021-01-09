@@ -1,21 +1,40 @@
 #include "commands-Set.hpp"
+#include <SFML/Graphics.hpp>
+
+extern sf::Text activeText;
+extern sf::Text wrireText;
+extern string countingEnter;
+extern string activeTextS;
+extern string wrireTextS;
+extern string path;
 
 void Colors :: color(string clr) {
     if(clr == "red") {
-        cout << "\x1B[31m\031\t\t" << '\n';
+        activeText.setFillColor(sf::Color::Red);
+        wrireText.setFillColor(sf::Color::Red);
     } else if(clr == "green") {
-        cout << "\x1B[32m\032\t\t" << '\n';
+        activeText.setFillColor(sf::Color::Green);
+        wrireText.setFillColor(sf::Color::Green);
     } else if(clr == "yellow") {
-        cout << "\x1B[33m\033\t\t" << '\n';
+        activeText.setFillColor(sf::Color::Yellow);
+        wrireText.setFillColor(sf::Color::Yellow);
     } else if(clr == "blue") {
-        cout << "\x1B[34m\034\t\t" << '\n';
+        activeText.setFillColor(sf::Color::Blue);
+        wrireText.setFillColor(sf::Color::Blue);
     } else if(clr == "magenta") {
-        cout << "\x1B[35m\035\t\t" << '\n';
+        activeText.setFillColor(sf::Color::Magenta);
+        wrireText.setFillColor(sf::Color::Magenta);
     } else if(clr == "cyan") {
-        cout << "\x1B[36m\036\t\t" << '\n';
+        activeText.setFillColor(sf::Color::Cyan);
+        wrireText.setFillColor(sf::Color::Cyan);
     } else if(clr == "white" || clr == "default" || clr == "standard") {
-        cout << "\x1B[37m\037\t\t" << '\n';
+        activeText.setFillColor(sf::Color::White);
+        wrireText.setFillColor(sf::Color::White);
     } else {
-        cout << "'" << clr << "': Color not found." << '\n';
+        wrireTextS += "Color not found\n";
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     }
 }

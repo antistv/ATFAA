@@ -9,6 +9,8 @@ sf::Event event;
 string command = "";
 string countingEnter = "";
 
+extern string path;
+
 sf::RenderWindow window(sf::VideoMode(1200, 720), "ATFAA TERMINAL", sf::Style::Default);
 
 void MainWindow::mainWindow(){
@@ -18,7 +20,7 @@ void MainWindow::mainWindow(){
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(15);
 
-    if(!font.loadFromFile("model/keyboard/fonts/arial.ttf")){
+    if(!font.loadFromFile("fonts/arial.ttf")){
         cout << "error to load font";
     }
 
@@ -26,6 +28,8 @@ void MainWindow::mainWindow(){
     activeText.setStyle(sf::Text::Italic);
     activeText.setFillColor(sf::Color::Red);
     activeText.setCharacterSize(30);
+    activeTextS=path+"> ";
+    activeText.setString(activeTextS);
 
     wrireText.setFont(font);
     wrireText.setStyle(sf::Text::Italic);
@@ -33,6 +37,10 @@ void MainWindow::mainWindow(){
     wrireText.setCharacterSize(30);
 
     while (window.isOpen()) {
+        window.clear();
+        window.draw(wrireText);
+        window.draw(activeText);
+        window.display();
 
         while (window.pollEvent(event)) {
             

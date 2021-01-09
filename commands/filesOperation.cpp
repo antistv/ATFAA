@@ -1,46 +1,91 @@
 #include "commands-Set.hpp"
+#include <SFML/Graphics.hpp>
 
 extern string path;
+extern sf::Text activeText;
+extern sf::Text wrireText;
+extern string countingEnter;
+extern string activeTextS;
+extern string wrireTextS;
 
 void FilesOperation :: createFolder(string nameFolder) {
     #ifdef WIN32
         system(("mkdir " + path + "\\" + nameFolder).c_str());
-        cout << "Folder are created" << '\n';
+        wrireTextS += "Directories are created\n";
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #else
         int status;
         status = system(("mkdir -p " + path + '/' + nameFolder).c_str());
-        if (status == -1)
-            cerr << "Error : " << strerror(errno) << '\n';
-        else
-            cout << "Directories are created" << '\n';
+        if (status == -1){
+            wrireTextS += "Error : " + string(strerror(errno)) +  '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        } else{
+            wrireTextS += "Directories are created\n";
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
     #endif
 }
 
 void FilesOperation :: deleteFolder(string nameFolderS) {
     #ifdef WIN32
         system(("rmdir /s /q " + path + "\\" + nameFolderS).c_str());
-        cout << "File are deleted" << '\n';
+        wrireTextS += "Directories are removed\n";
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #else
         int status;
         status = system(("rm -r /" + path + '/' + nameFolderS).c_str());
-        if (status == -1)
-            cerr << "Error : " << strerror(errno) << '\n';
-        else
-            cout << "Directories are removed" << '\n';
+        if (status == -1){
+            wrireTextS += "Error : " + string(strerror(errno)) +  '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        } else {
+            wrireTextS += "Directories are removed\n";
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
     #endif
 }
 
 void FilesOperation :: renameDir(string nameFolderToRename, string newNameFolder){
     #ifdef WIN32
         system(("rename " + path + "\\" + nameFolderToRename + " " + newNameFolder).c_str());
-        cout << "Folder are renamed" << '\n';
+        wrireTextS += "Directories are renamed\n";
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #else
         int status;
         status = system(("mv " + path + '/' + nameFolderToRename + " " + path + '/' + newNameFolder).c_str());
-        if (status == -1)
-            cerr << "Error : " << strerror(errno) << '\n';
-        else
-            cout << "Directories are renamed" << '\n';
+        if (status == -1){
+            wrireTextS += "Error : " + string(strerror(errno)) +  '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        } else {
+            wrireTextS += "Directories are renamed\n";
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
     #endif
 }
 
@@ -51,41 +96,80 @@ void FilesOperation :: createFile(string nameFile) {
         //system(("mkdir " + path + "\\" + nameFile).c_str());
         ofstream outfile (path+"\\"+nameFile);
         outfile.close();
-        cout << "File are created" << '\n';
+        wrireTextS += "File are created\n";
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #else
         int status;
         status = system(("mkdir -p " + path + '/' + nameFile).c_str());
-        if (status == -1)
-            cerr << "Error : " << strerror(errno) << '\n';
-        else
-            cout << "File are created" << '\n';
+        if (status == -1) {
+            wrireTextS += "Error : " + string(strerror(errno)) +  '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        } else {
+            wrireTextS += "File are created\n";
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
     #endif
 }
 
 void FilesOperation :: deleteFile(string nameFileS) {
     #ifdef WIN32
         system(("del /f " + path + "\\" + nameFileS).c_str());
-        cout << "File are deleted" << '\n';
+        wrireTextS += "File are removed\n";
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #else
         int status;
         status = system(("rm -r /" + path + '/' + nameFileS).c_str());
-        if (status == -1)
-            cerr << "Error : " << strerror(errno) << '\n';
-        else
-            cout << "File are removed" << '\n';
+        if (status == -1) {
+            wrireTextS += "Error : " + string(strerror(errno)) +  '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        } else {
+            wrireTextS += "File are removed\n";
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
     #endif
 }
 
 void FilesOperation :: renameFile(string fileToRename, string newNameOfFile){
     #ifdef WIN32
         system(("rename " + path + "\\" + fileToRename + " " + newNameOfFile).c_str());
-        cout << "File are renamed" << '\n';
+        wrireTextS += "File are renamed\n";
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #else
         int status;
         status = system(("mv " + path + '/' + fileToRename + " " + path + '/' + newNameOfFile).c_str());
-        if (status == -1)
-            cerr << "Error : " << strerror(errno) << '\n';
-        else
-            cout << "File are renamed" << '\n';
+        if (status == -1) {
+            wrireTextS += "Error : " + string(strerror(errno)) +  '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        } else {
+            wrireTextS += "File are renamed\n";
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
     #endif
 }

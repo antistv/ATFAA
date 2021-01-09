@@ -45,3 +45,8 @@ class MainFunc {
     string clearTabsAndSpaces(string line);
     string getStringCommand(string line);
 };
+
+class OperateCmd {
+    public:
+        void runCommand(string cmd);
+};
