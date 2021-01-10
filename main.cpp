@@ -1,7 +1,6 @@
 #include "main.hpp"
 
 //Zintegorwać basic func
-//croll
 //błąd usuwania komędy poza linijką
 
 string version = "0.0.2";

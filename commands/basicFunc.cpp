@@ -1,37 +1,96 @@
 #include "commands-Set.hpp"
+#include <SFML/Graphics.hpp>
+#include "../model/main-win.hpp"
+
+extern string path;
+extern sf::Text activeText;
+extern sf::Text wrireText;
+extern string countingEnter;
+extern string activeTextS;
+extern string wrireTextS;
 
 extern string path;
 
 void BasicFunc :: proc() {
     #ifdef WIN32
-        system("proc");
+        string str;
+        str = system("proc");
+
+        int countingEnterinFile=0;
+        for(int i=0; i<str.length(); ++i) {
+            if(str[i] == '\n') ++countingEnterinFile;
+        }
+
+        wrireTextS += str + '\n';
+        wrireText.setString(wrireTextS);
+        for(int i=0; i<=countingEnterinFile; ++i) countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #else
-        system("ps -U root -u root -N");
+        string str;
+        str = system("ps -U root -u root -N");
+
+        int countingEnterinFile=0;
+        for(int i=0; i<str.length(); ++i) {
+            if(str[i] == '\n') ++countingEnterinFile;
+        }
+    
+        wrireTextS += str + '\n';
+        wrireText.setString(wrireTextS);
+        for(int i=0; i<=countingEnterinFile; ++i) countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #endif
 }
 
 void BasicFunc :: help() {
     ifstream f("help.txt");
-    if (f.is_open())
-        cout << f.rdbuf();
+    if (f.is_open()){
+        string str;
+
+        f.seekg(0, ios::end);   
+        str.reserve(f.tellg());
+        f.seekg(0, std::ios::beg);
+
+        str.assign((istreambuf_iterator<char>(f)),
+                    istreambuf_iterator<char>());
+
+        int countingEnterinFile=0;
+        for(int i=0; i<str.length(); ++i) {
+            if(str[i] == '\n') ++countingEnterinFile;
+        }
+
+        wrireTextS += str + '\n';
+        wrireText.setString(wrireTextS);
+        for(int i=0; i<=countingEnterinFile; ++i) countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
+    }
     f.close();
-    cout << '\n';
 }
 
 void BasicFunc :: lsAndDir() {
     #ifdef WIN32
-        system(("dir " + path).c_str());
+        wrireTextS += system(("dir " + path).c_str()) + '\n';
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #else
-        system(("ls " + path).c_str());
+        wrireTextS += system(("ls " + path).c_str()) + '\n';
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #endif
 }
 
 void BasicFunc :: clear() {
-    #ifdef WIN32
-        system("cls");
-    #else
-        system("clear");
-    #endif
+    wrireTextS = "";
+    countingEnter="";
+    wrireText.setString(wrireTextS);
+    activeTextS = path+">";
+    activeText.setString(countingEnter+activeTextS);
 }
 
 void BasicFunc :: treeWin() {
@@ -44,8 +103,10 @@ void BasicFunc :: treeWin() {
 
 void BasicFunc :: terminal() {
     #ifdef WIN32
-        system(".\\ATFAA");
+        MainWindow window;
+        window.mainWindow();
     #else
-        system("./ATFAA");
+        MainWindow window;
+        window.mainWindow();
     #endif
 }

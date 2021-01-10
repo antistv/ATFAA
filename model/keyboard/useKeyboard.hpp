@@ -5,13 +5,13 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 
-//#include "../commands/commands-Set.hpp"
-
-
 using namespace std;
 
 class KeybordFunc{
     public:
         void keyboard();
         void checkEdge();
+        void rectMove();
+        void scrollMove();
+        void moveCamera();
 };
