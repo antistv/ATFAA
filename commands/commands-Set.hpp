@@ -7,6 +7,8 @@
 #include <stdlib.h> 
 #include <cstdlib>
 #include <cstdio> 
+#include <streambuf>
+
 using namespace std;
 
 class BasicFunc{

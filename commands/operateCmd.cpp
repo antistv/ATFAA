@@ -1,6 +1,13 @@
 #include "../main.hpp"
 
+extern sf::Text activeText;
+extern sf::Text wrireText;
+extern string countingEnter;
+extern string activeTextS;
+extern string wrireTextS;
+extern sf::RectangleShape rect;
 extern string version;
+extern string path;
 
 void OperateCmd::runCommand(string cmd){
     MainFunc mainFunc;
@@ -83,7 +90,11 @@ void OperateCmd::runCommand(string cmd){
         } else if(arg == "cmd" || arg == "terminal" || arg == "console") {
             basicFunc.terminal();
         } else {
-            cout<<"Command not found"<<'\n';
+            wrireTextS += "Command not found\n";
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
         }
     }
 }

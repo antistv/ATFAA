@@ -1,5 +1,7 @@
 #include "main-win.hpp"
 
+sf::RenderWindow window(sf::VideoMode(1200, 720), "ATFAA TERMINAL", sf::Style::Default);
+
 string activeTextS;
 string wrireTextS;
 sf::Text activeText;
@@ -8,50 +10,49 @@ sf::Font font;
 sf::Event event;
 string command = "";
 string countingEnter = "";
+int textSize=30;
+sf::RectangleShape rect(sf::Vector2f(textSize/2, textSize));
+sf::View camera = window.getDefaultView();
+
+bool scrollOrNo=true;
 
 extern string path;
-
-sf::RenderWindow window(sf::VideoMode(1200, 720), "ATFAA TERMINAL", sf::Style::Default);
 
 void MainWindow::mainWindow(){
 
     KeybordFunc useKeyboard;
 
     window.setVerticalSyncEnabled(true);
-    window.setFramerateLimit(15);
+    window.setFramerateLimit(30);
 
     if(!font.loadFromFile("fonts/arial.ttf")){
         cout << "error to load font";
     }
 
+//SET TEXT
     activeText.setFont(font);
     activeText.setStyle(sf::Text::Italic);
     activeText.setFillColor(sf::Color::Red);
-    activeText.setCharacterSize(30);
+    activeText.setCharacterSize(textSize);
     activeTextS=path+"> ";
     activeText.setString(activeTextS);
 
     wrireText.setFont(font);
     wrireText.setStyle(sf::Text::Italic);
     wrireText.setFillColor(sf::Color::Red);
-    wrireText.setCharacterSize(30);
+    wrireText.setCharacterSize(textSize);
+
+    rect.setFillColor(sf::Color::Red);
+    useKeyboard.rectMove();
+//
+    camera.setCenter(sf::Vector2f(window.getSize().x/2, window.getSize().y/2));
+    window.setView(camera);
 
     while (window.isOpen()) {
-        window.clear();
-        window.draw(wrireText);
-        window.draw(activeText);
-        window.display();
-
         while (window.pollEvent(event)) {
             
-            if (event.type == sf::Event::MouseWheelScrolled) {
-                if(event.mouseWheelScroll.delta > 0) {
-                    cout<<"scroll w gore"<<endl;
-                } else if(event.mouseWheelScroll.delta < 0) {
-                    cout<<"scroll w dol"<<endl;
-                }
-            }
-
+            if(scrollOrNo) useKeyboard.moveCamera();
+            useKeyboard.scrollMove();
             useKeyboard.keyboard();
             useKeyboard.checkEdge();
 
@@ -65,6 +66,8 @@ void MainWindow::mainWindow(){
         window.clear();
         window.draw(wrireText);
         window.draw(activeText);
+        window.draw(rect);
+        window.setView(camera);
         window.display();
     }   
 }    
