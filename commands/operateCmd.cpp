@@ -17,7 +17,7 @@ bool OperateCmd::runCommand(string cmd){
     Colors colorFunc;
     MainWindow window;
 
-    string arg, arg2;
+    string arg, arg2, arg3;
 
     if(cmd.size() > 0){
 
@@ -27,12 +27,26 @@ bool OperateCmd::runCommand(string cmd){
 
         if(arg == "exit" || arg == "close") {
             exit(0);
-        } else if(arg == "color"){
+        } else if(arg == "fcolor"){
             cmd = mainFunc.clearTabsAndSpaces(cmd);
             arg = mainFunc.getStringCommand(cmd);
             cmd.erase(0, arg.length()+1);   
+            arg2 = mainFunc.getStringCommand(cmd);
+            cmd.erase(0, arg2.length()+1); 
+            arg3 = mainFunc.getStringCommand(cmd);
+            cmd.erase(0, arg2.length()+1); 
 
-            colorFunc.color(arg);
+            colorFunc.Fcolor(arg, arg2, arg3);
+        } else if(arg == "bcolor"){
+            cmd = mainFunc.clearTabsAndSpaces(cmd);
+            arg = mainFunc.getStringCommand(cmd);
+            cmd.erase(0, arg.length()+1); 
+            arg2 = mainFunc.getStringCommand(cmd);
+            cmd.erase(0, arg2.length()+1); 
+            arg3 = mainFunc.getStringCommand(cmd);
+            cmd.erase(0, arg2.length()+1);   
+
+            colorFunc.Bcolor(arg, arg2, arg3);
         } else if(arg == "clear" || arg == "cls") {  
             basicFunc.clear();
         } else if(arg == "cd") {

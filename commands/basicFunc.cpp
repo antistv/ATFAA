@@ -12,7 +12,7 @@ extern string path;
 
 void BasicFunc :: proc() {
     #ifdef WIN32
-        system("proc > commands/system-proc.txt");
+        system("tasklist > commands/system-proc.txt");
 
         string line;
 	    fstream infile;
