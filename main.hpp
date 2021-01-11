@@ -1,9 +1,10 @@
-#include <iostream>
-#include <string.h>
-
 #include "commands/commands-Set.hpp"
 #include "model/main-win.hpp"
+#include "adminFunc/adminDef.hpp"
 
-using namespace std;
+#ifdef WIN32
+    #include <windows.h>
+#endif
+
 
 int main();

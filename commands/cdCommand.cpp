@@ -1,5 +1,5 @@
 #include "commands-Set.hpp"
-#include <SFML/Graphics.hpp>
+#include "../adminFunc/adminDef.hpp"
 
 extern string path;
 extern sf::Text activeText;

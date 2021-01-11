@@ -1,12 +1,11 @@
 #include "commands-Set.hpp"
-#include <SFML/Graphics.hpp>
 
-extern string path;
 extern sf::Text activeText;
 extern sf::Text wrireText;
 extern string countingEnter;
 extern string activeTextS;
 extern string wrireTextS;
+extern string path;
 
 void FilesOperation :: createFolder(string nameFolder) {
     #ifdef WIN32
