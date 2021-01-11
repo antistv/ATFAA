@@ -1,5 +1,4 @@
 #include "commands-Set.hpp"
-#include <SFML/Graphics.hpp>
 #include "../model/main-win.hpp"
 
 extern string path;
@@ -13,33 +12,51 @@ extern string path;
 
 void BasicFunc :: proc() {
     #ifdef WIN32
-        string str;
-        str = system("proc");
+        system("proc > commands/system-proc.txt");
 
-        int countingEnterinFile=0;
-        for(int i=0; i<str.length(); ++i) {
-            if(str[i] == '\n') ++countingEnterinFile;
+        string line;
+	    fstream infile;
+	    infile.open ("commands/system-proc.txt" );
+        while(!infile.eof()) { // To get you all the lines.
+	        infile >> line; // Saves the line in STRING.
+            cout << line << '\n';
+
+            wrireTextS += line + '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
         }
+	    infile.close();
 
-        wrireTextS += str + '\n';
-        wrireText.setString(wrireTextS);
-        for(int i=0; i<=countingEnterinFile; ++i) countingEnter += '\n';
-        activeTextS = path+">";
-        activeText.setString(countingEnter+activeTextS);
+        infile.open ("commands/system-proc.txt", std::ifstream::out | std::ifstream::trunc );
+        infile.close();
     #else
-        string str;
-        str = system("ps -U root -u root -N");
+        system("ps -U root -u root -N > commands/system-proc.txt");
 
-        int countingEnterinFile=0;
-        for(int i=0; i<str.length(); ++i) {
-            if(str[i] == '\n') ++countingEnterinFile;
+        short howManyEnter=0;
+        string line;
+	    fstream infile;
+	    infile.open ("commands/system-proc.txt" );
+        while(!infile.eof()) { // To get you all the lines.
+	        infile >> line; // Saves the line in STRING.
+            ++howManyEnter;
+            
+            if(howManyEnter == 4){
+                wrireTextS += line + '\n';
+                wrireText.setString(wrireTextS);
+                countingEnter += '\n';
+                activeTextS = path+">";
+                activeText.setString(countingEnter+activeTextS);
+                howManyEnter = 0;
+            } else {
+                wrireTextS += line + " ";
+            }
         }
-    
-        wrireTextS += str + '\n';
-        wrireText.setString(wrireTextS);
-        for(int i=0; i<=countingEnterinFile; ++i) countingEnter += '\n';
-        activeTextS = path+">";
-        activeText.setString(countingEnter+activeTextS);
+	    infile.close();
+
+        infile.open ("commands/system-proc.txt", std::ifstream::out | std::ifstream::trunc );
+        infile.close();
     #endif
 }
 
@@ -71,17 +88,45 @@ void BasicFunc :: help() {
 
 void BasicFunc :: lsAndDir() {
     #ifdef WIN32
-        wrireTextS += system(("dir " + path).c_str()) + '\n';
-        wrireText.setString(wrireTextS);
-        countingEnter += '\n';
-        activeTextS = path+">";
-        activeText.setString(countingEnter+activeTextS);
+        system(("dir " + path + " > commands/system-proc.txt").c_str());
+
+        string line;
+	    fstream infile;
+	    infile.open ("commands/system-proc.txt" );
+        while(!infile.eof()) { // To get you all the lines.
+	        infile >> line; // Saves the line in STRING.
+            cout << line << '\n';
+
+            wrireTextS += line + '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
+	    infile.close();
+
+        infile.open ("commands/system-proc.txt", std::ifstream::out | std::ifstream::trunc );
+        infile.close();
     #else
-        wrireTextS += system(("ls " + path).c_str()) + '\n';
-        wrireText.setString(wrireTextS);
-        countingEnter += '\n';
-        activeTextS = path+">";
-        activeText.setString(countingEnter+activeTextS);
+        system(("ls " + path + " > commands/system-proc.txt").c_str());
+
+        string line;
+	    fstream infile;
+	    infile.open ("commands/system-proc.txt" );
+        while(!infile.eof()) { // To get you all the lines.
+	        infile >> line; // Saves the line in STRING.
+            cout << line << '\n';
+
+            wrireTextS += line + '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
+	    infile.close();
+
+        infile.open ("commands/system-proc.txt", std::ifstream::out | std::ifstream::trunc );
+        infile.close();
     #endif
 }
 
@@ -103,10 +148,8 @@ void BasicFunc :: treeWin() {
 
 void BasicFunc :: terminal() {
     #ifdef WIN32
-        MainWindow window;
-        window.mainWindow();
+
     #else
-        MainWindow window;
-        window.mainWindow();
+        system("./sfml-app");
     #endif
 }

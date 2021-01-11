@@ -9,7 +9,7 @@ extern sf::RectangleShape rect;
 extern string version;
 extern string path;
 
-void OperateCmd::runCommand(string cmd){
+bool OperateCmd::runCommand(string cmd){
     MainFunc mainFunc;
     BasicFunc basicFunc;
     CDcom cd;
@@ -90,11 +90,10 @@ void OperateCmd::runCommand(string cmd){
         } else if(arg == "cmd" || arg == "terminal" || arg == "console") {
             basicFunc.terminal();
         } else {
-            wrireTextS += "Command not found\n";
-            wrireText.setString(wrireTextS);
-            countingEnter += '\n';
-            activeTextS = path+">";
-            activeText.setString(countingEnter+activeTextS);
+            return false;
         }
+    } else {
+        return false;
     }
+    return true;
 }

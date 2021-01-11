@@ -2,21 +2,22 @@
 
 sf::RenderWindow window(sf::VideoMode(1200, 720), "ATFAA TERMINAL", sf::Style::Default);
 
+string command = "";
+string countingEnter = "";
+int textSize=30;
+bool scrollOrNo=true;
+
 string activeTextS;
 string wrireTextS;
 sf::Text activeText;
 sf::Text wrireText;
 sf::Font font;
 sf::Event event;
-string command = "";
-string countingEnter = "";
-int textSize=30;
 sf::RectangleShape rect(sf::Vector2f(textSize/2, textSize));
 sf::View camera = window.getDefaultView();
 
-bool scrollOrNo=true;
-
 extern string path;
+extern string version;
 
 void MainWindow::mainWindow(){
 
@@ -29,18 +30,21 @@ void MainWindow::mainWindow(){
         cout << "error to load font";
     }
 
-//SET TEXT
+//SET OBJECT
     activeText.setFont(font);
     activeText.setStyle(sf::Text::Italic);
     activeText.setFillColor(sf::Color::Red);
     activeText.setCharacterSize(textSize);
+    countingEnter += "\n\n\n";
     activeTextS=path+"> ";
-    activeText.setString(activeTextS);
-
+    activeText.setString(countingEnter + activeTextS);
+    
     wrireText.setFont(font);
     wrireText.setStyle(sf::Text::Italic);
     wrireText.setFillColor(sf::Color::Red);
     wrireText.setCharacterSize(textSize);
+    wrireTextS="ATFAA Terminal " + version + '\n' + "Copyright (c) ATFAA Corporation. All rights reserved" + '\n' + "Type 'help' to get help." + '\n';
+    wrireText.setString(wrireTextS);
 
     rect.setFillColor(sf::Color::Red);
     useKeyboard.rectMove();

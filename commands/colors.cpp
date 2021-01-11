@@ -27,7 +27,7 @@ void Colors :: color(string clr) {
         activeText.setFillColor(sf::Color::Blue);
         wrireText.setFillColor(sf::Color::Blue);
         rect.setFillColor(sf::Color::Blue);
-    } else if(clr == "magenta") {
+    } else if(clr == "magenta" || clr == "violet" || clr == "purple") {
         activeText.setFillColor(sf::Color::Magenta);
         wrireText.setFillColor(sf::Color::Magenta);
         rect.setFillColor(sf::Color::Magenta);
@@ -39,6 +39,14 @@ void Colors :: color(string clr) {
         activeText.setFillColor(sf::Color::White);
         wrireText.setFillColor(sf::Color::White);
         rect.setFillColor(sf::Color::White);
+    } else if(clr == "orange") {
+        activeText.setFillColor(sf::Color(254,127,0));
+        wrireText.setFillColor(sf::Color(254,127,0));
+        rect.setFillColor(sf::Color(254,127,0));
+    } else if(clr == "infusiowy") {
+        activeText.setFillColor(sf::Color::Transparent);
+        wrireText.setFillColor(sf::Color::Transparent);
+        rect.setFillColor(sf::Color::Transparent);
     } else {
         wrireTextS += "Color not found\n";
         wrireText.setString(wrireTextS);

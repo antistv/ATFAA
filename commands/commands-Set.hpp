@@ -2,12 +2,9 @@
 #include <unistd.h>
 #include <string.h>
 #include <fstream>
-#include <filesystem>
-#include <sys/stat.h>
-#include <stdlib.h> 
 #include <cstdlib>
 #include <cstdio> 
-#include <streambuf>
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 
@@ -24,6 +21,7 @@ class BasicFunc{
 class CDcom {
     public:
         void CDCommand(string container);
+    private:    
         string popath="";
 };
 
@@ -42,13 +40,13 @@ class FilesOperation{
         void renameFile(string fileToRename, string newNameOfFile);
 };
 
-class MainFunc {
-  public:
-    string clearTabsAndSpaces(string line);
-    string getStringCommand(string line);
-};
-
 class OperateCmd {
     public:
-        void runCommand(string cmd);
+        bool runCommand(string cmd);
+};
+
+class SysCommands {
+    public:
+        bool checkAndExecuteCmd(string cmd);
+        bool isEmpty(std::ifstream& pFile);
 };

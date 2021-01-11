@@ -17,6 +17,7 @@ extern bool scrollOrNo;
 
 extern string path;
 
+SysCommands systemCommands;
 OperateCmd operation;
 int scrollEnter = 0;
 
@@ -49,8 +50,17 @@ void KeybordFunc::keyboard() {
             wrireTextS += '\n';
             countingEnter += '\n';
             //Wysłanie komendy
-                operation.runCommand(command);
+                if(!operation.runCommand(command)){
+                    if(!systemCommands.checkAndExecuteCmd(command)){
+                        wrireTextS += "Command not found\n";
+                        wrireText.setString(wrireTextS);
+                        countingEnter += '\n';
+                        activeTextS = path+">";
+                        activeText.setString(countingEnter+activeTextS);
+                    }
+                }
                 cout << command << "--" << '\n';
+            //
             activeTextS=path+"> ";
             command = "";
             activeText.setString(countingEnter+activeTextS);
