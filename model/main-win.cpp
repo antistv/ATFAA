@@ -6,7 +6,7 @@ string command = "";
 string countingEnter = "";
 int textSize=30;
 bool scrollOrNo=true;
-
+sf::Color BgC = sf::Color::Black;
 string activeTextS;
 string wrireTextS;
 sf::Text activeText;
@@ -45,7 +45,6 @@ void MainWindow::mainWindow(){
     wrireText.setCharacterSize(textSize);
     wrireTextS="ATFAA Terminal " + version + '\n' + "Copyright (c) ATFAA Corporation. All rights reserved" + '\n' + "Type 'help' to get help." + '\n';
     wrireText.setString(wrireTextS);
-
     rect.setFillColor(sf::Color::Red);
     useKeyboard.rectMove();
 //
@@ -66,8 +65,7 @@ void MainWindow::mainWindow(){
             }
 
         }
-
-        window.clear();
+        window.clear(BgC);
         window.draw(wrireText);
         window.draw(activeText);
         window.draw(rect);

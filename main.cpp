@@ -9,7 +9,9 @@ int main() {
     setlocale( LC_ALL, "pl_PL" );
 
     #ifdef WIN32
-        path = getenv("systemdrive") + getenv("homepath");
+        string drive = getenv("systemdrive");
+        string home = getenv("homepath");
+        path = drive+home;
         HWND hWnd = GetConsoleWindow();
         ShowWindow( hWnd, SW_HIDE );
     #else

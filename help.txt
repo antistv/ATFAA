@@ -14,8 +14,12 @@ COMMANDS:
         -shows the installed version of the terminal
   -->cd <catalog>
         -go to dictionary
-  -->color <color>
-        -all colors >> red, green, yellow, blue, magenta, cyan, white
+  -->fcolor <color> or <r> <g> <b>
+        -color of text
+        -all standard colors >> red, green, yellow, blue, magenta, cyan, white, black, orange
+  -->bcolor <color> or <r> <g> <b>
+        -color of background
+        -all standard colors >> red, green, yellow, blue, magenta, cyan, white, black, orange
   -->clear
         -clear all terminal
   -->exit/close

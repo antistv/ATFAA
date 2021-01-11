@@ -27,7 +27,8 @@ class CDcom {
 
 class Colors {
     public:
-        void color(string clr);
+        void Fcolor(string clr, string clr2, string clr3);
+        void Bcolor(string clr, string clr2, string clr3);
 };
 
 class FilesOperation{
