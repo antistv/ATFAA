@@ -14,18 +14,24 @@ void BasicFunc :: proc() {
     #ifdef WIN32
         system("tasklist > commands/system-proc.txt");
 
+        short howManyEnter=0;
         string line;
 	    fstream infile;
 	    infile.open ("commands/system-proc.txt" );
         while(!infile.eof()) { // To get you all the lines.
 	        infile >> line; // Saves the line in STRING.
-            cout << line << '\n';
-
-            wrireTextS += line + '\n';
-            wrireText.setString(wrireTextS);
-            countingEnter += '\n';
-            activeTextS = path+">";
-            activeText.setString(countingEnter+activeTextS);
+            ++howManyEnter;
+            
+            if(howManyEnter == 6){
+                wrireTextS += line + '\n';
+                wrireText.setString(wrireTextS);
+                countingEnter += '\n';
+                activeTextS = path+">";
+                activeText.setString(countingEnter+activeTextS);
+                howManyEnter = 0;
+            } else {
+                wrireTextS += line + " ";
+            }
         }
 	    infile.close();
 
