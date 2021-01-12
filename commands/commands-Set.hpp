@@ -29,6 +29,7 @@ class Colors {
     public:
         void Fcolor(string clr, string clr2, string clr3);
         void Bcolor(string clr, string clr2, string clr3);
+        bool is_number(const std::string &s);
 };
 
 class FilesOperation{

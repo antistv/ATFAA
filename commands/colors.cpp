@@ -13,11 +13,19 @@ extern sf::Color BgC;
 
 void Colors :: Fcolor(string clr, string clr2, string clr3) {
     if(clr3!=""){
-        int r, g, b;
-        r = stoi(clr); g = stoi(clr2); b = stoi(clr3);
-        activeText.setFillColor(sf::Color(r,g,b));
-        wrireText.setFillColor(sf::Color(r,g,b));
-        rect.setFillColor(sf::Color(r,g,b));
+        if(is_number(clr) && is_number(clr2) && is_number(clr3) && clr.length()<=3 && clr2.length()<=3 && clr3.length()<=3){
+            int r, g, b;
+            r = stoi(clr); g = stoi(clr2); b = stoi(clr3);
+            activeText.setFillColor(sf::Color(r,g,b));
+            wrireText.setFillColor(sf::Color(r,g,b));
+            rect.setFillColor(sf::Color(r,g,b));
+        } else {
+            wrireTextS += "This color is not exist\n";
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
     } else {
         if(clr == "red") {
             activeText.setFillColor(sf::Color::Red);
@@ -71,9 +79,17 @@ void Colors :: Fcolor(string clr, string clr2, string clr3) {
 
 void Colors :: Bcolor(string clr, string clr2, string clr3) {
     if(clr3!=""){
-        int r, g, b;
-        r = stoi(clr); g = stoi(clr2); b = stoi(clr3);
-        BgC = sf::Color(r,g,b);
+        if(is_number(clr) && is_number(clr2) && is_number(clr3) && clr.length()<=3 && clr2.length()<=3 && clr3.length()<=3){
+            int r, g, b;
+            r = stoi(clr); g = stoi(clr2); b = stoi(clr3);
+            BgC = sf::Color(r,g,b);
+        } else {
+            wrireTextS += "This color is not exist\n";
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
     } else {
         if(clr == "red") {
             BgC = sf::Color::Red;
@@ -103,4 +119,8 @@ void Colors :: Bcolor(string clr, string clr2, string clr3) {
             activeText.setString(countingEnter+activeTextS);
         }
     }
+}
+
+bool Colors :: is_number(const std::string &s) {
+  return !s.empty() && std::all_of(s.begin(), s.end(), ::isdigit);
 }

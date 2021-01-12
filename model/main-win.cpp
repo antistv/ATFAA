@@ -4,7 +4,7 @@ sf::RenderWindow window(sf::VideoMode(1200, 720), "ATFAA TERMINAL", sf::Style::D
 
 string command = "";
 string countingEnter = "";
-int textSize=30;
+int textSize=20;
 bool scrollOrNo=true;
 sf::Color BgC = sf::Color::Black;
 string activeTextS;
@@ -26,7 +26,7 @@ void MainWindow::mainWindow(){
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(30);
 
-    if(!font.loadFromFile("fonts/arial.ttf")){
+    if(!font.loadFromFile("fonts/DejaVuSans-Bold.ttf")){
         cout << "error to load font";
     }
 
