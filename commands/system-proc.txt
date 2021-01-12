@@ -1,0 +1,307 @@
+Folder PATH listing for volume OS
+Volume serial number is 088E-C710
+C:\USERS\SYBIR\DESKTOP
+ÃÄÄÄATFAA
+³   ÃÄÄÄcommands
+³   ÀÄÄÄsmieci
+ÃÄÄÄMain
+³   ÃÄÄÄAktualna praca
+³   ³   ÃÄÄÄAngielski
+³   ³   ÃÄÄÄatfaa
+³   ³   ÃÄÄÄbpbPunk
+³   ³   ³   ÀÄÄÄBPBPunkMenu
+³   ³   ³       ÃÄÄÄBPB Punk_Data
+³   ³   ³       ³   ÃÄÄÄManaged
+³   ³   ³       ³   ÀÄÄÄResources
+³   ³   ³       ÀÄÄÄMonoBleedingEdge
+³   ³   ³           ÃÄÄÄEmbedRuntime
+³   ³   ³           ÀÄÄÄetc
+³   ³   ³               ÀÄÄÄmono
+³   ³   ³                   ÃÄÄÄ2.0
+³   ³   ³                   ³   ÀÄÄÄBrowsers
+³   ³   ³                   ÃÄÄÄ4.0
+³   ³   ³                   ³   ÀÄÄÄBrowsers
+³   ³   ³                   ÃÄÄÄ4.5
+³   ³   ³                   ³   ÀÄÄÄBrowsers
+³   ³   ³                   ÀÄÄÄmconfig
+³   ³   ÃÄÄÄC# od podstaw
+³   ³   ÃÄÄÄGrafikaDoAutoSalon
+³   ³   ÃÄÄÄnauka c++
+³   ³   ÃÄÄÄProzu Clicker
+³   ³   ÃÄÄÄPr¢bne
+³   ³   ÃÄÄÄSiatk¢wka
+³   ³   ÀÄÄÄTˆaNaEL
+³   ÃÄÄÄArchiwum
+³   ³   ÀÄÄÄQuizletUnit1
+³   ÃÄÄÄATFAA-Release-master
+³   ³   ÀÄÄÄATFAA-Release-master
+³   ³       ÀÄÄÄATFAA
+³   ³           ÀÄÄÄreq
+³   ³               ÀÄÄÄeditor
+³   ³                   ÃÄÄÄoutput
+³   ³                   ÀÄÄÄ__pycache__
+³   ÃÄÄÄCzeski
+³   ÃÄÄÄProgramowanie
+³   ³   ÃÄÄÄC#
+³   ³   ³   ÃÄÄÄCalculator
+³   ³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³   ³   ÀÄÄÄDebug
+³   ³   ³   ³   ÃÄÄÄobj
+³   ³   ³   ³   ³   ÀÄÄÄDebug
+³   ³   ³   ³   ³       ÀÄÄÄTempPE
+³   ³   ³   ³   ÀÄÄÄProperties
+³   ³   ³   ÃÄÄÄkey checker
+³   ³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³   ³   ÃÄÄÄDebug
+³   ³   ³   ³   ³   ÀÄÄÄRelease
+³   ³   ³   ³   ÃÄÄÄobj
+³   ³   ³   ³   ³   ÀÄÄÄDebug
+³   ³   ³   ³   ³       ÀÄÄÄTempPE
+³   ³   ³   ³   ÀÄÄÄProperties
+³   ³   ³   ÃÄÄÄodc4
+³   ³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³   ³   ÀÄÄÄDebug
+³   ³   ³   ³   ÃÄÄÄobj
+³   ³   ³   ³   ³   ÀÄÄÄDebug
+³   ³   ³   ³   ³       ÀÄÄÄTempPE
+³   ³   ³   ³   ÀÄÄÄProperties
+³   ³   ³   ÀÄÄÄWordCounter
+³   ³   ³       ÃÄÄÄbin
+³   ³   ³       ³   ÀÄÄÄDebug
+³   ³   ³       ÃÄÄÄobj
+³   ³   ³       ³   ÀÄÄÄDebug
+³   ³   ³       ³       ÀÄÄÄTempPE
+³   ³   ³       ÀÄÄÄProperties
+³   ³   ÃÄÄÄC$
+³   ³   ³   ÃÄÄÄ.vscode
+³   ³   ³   ÃÄÄÄbuild
+³   ³   ³   ÃÄÄÄsrc
+³   ³   ³   ÀÄÄÄStaryKod
+³   ³   ÃÄÄÄC++
+³   ³   ³   ÃÄÄÄ.vscode
+³   ³   ³   ÃÄÄÄgraphics
+³   ³   ³   ÃÄÄÄSDL2
+³   ³   ³   ³   ÃÄÄÄi686-w64-mingw32
+³   ³   ³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³   ³   ÃÄÄÄinclude
+³   ³   ³   ³   ³   ³   ÀÄÄÄSDL2
+³   ³   ³   ³   ³   ÃÄÄÄlib
+³   ³   ³   ³   ³   ³   ÃÄÄÄcmake
+³   ³   ³   ³   ³   ³   ³   ÀÄÄÄSDL2
+³   ³   ³   ³   ³   ³   ÀÄÄÄpkgconfig
+³   ³   ³   ³   ³   ÀÄÄÄshare
+³   ³   ³   ³   ³       ÀÄÄÄaclocal
+³   ³   ³   ³   ÀÄÄÄx86_64-w64-mingw32
+³   ³   ³   ³       ÃÄÄÄbin
+³   ³   ³   ³       ÃÄÄÄinclude
+³   ³   ³   ³       ³   ÀÄÄÄSDL2
+³   ³   ³   ³       ÃÄÄÄlib
+³   ³   ³   ³       ³   ÃÄÄÄcmake
+³   ³   ³   ³       ³   ³   ÀÄÄÄSDL2
+³   ³   ³   ³       ³   ÀÄÄÄpkgconfig
+³   ³   ³   ³       ÀÄÄÄshare
+³   ³   ³   ³           ÀÄÄÄaclocal
+³   ³   ³   ÀÄÄÄTicTacToe
+³   ³   ³       ÀÄÄÄ.vscode
+³   ³   ÃÄÄÄCCASH
+³   ³   ³   ÃÄÄÄ.vscode
+³   ³   ³   ÃÄÄÄbuild
+³   ³   ³   ÀÄÄÄsrc
+³   ³   ÃÄÄÄDecode it
+³   ³   ÃÄÄÄGo
+³   ³   ÃÄÄÄGry Unity
+³   ³   ³   ÃÄÄÄGry
+³   ³   ³   ³   ÃÄÄÄAsystentGˆosowy
+³   ³   ³   ³   ³   ÃÄÄÄAuto lip sync_Data
+³   ³   ³   ³   ³   ³   ÃÄÄÄManaged
+³   ³   ³   ³   ³   ³   ÀÄÄÄResources
+³   ³   ³   ³   ³   ÀÄÄÄMonoBleedingEdge
+³   ³   ³   ³   ³       ÃÄÄÄEmbedRuntime
+³   ³   ³   ³   ³       ÀÄÄÄetc
+³   ³   ³   ³   ³           ÀÄÄÄmono
+³   ³   ³   ³   ³               ÃÄÄÄ2.0
+³   ³   ³   ³   ³               ³   ÀÄÄÄBrowsers
+³   ³   ³   ³   ³               ÃÄÄÄ4.0
+³   ³   ³   ³   ³               ³   ÀÄÄÄBrowsers
+³   ³   ³   ³   ³               ÃÄÄÄ4.5
+³   ³   ³   ³   ³               ³   ÀÄÄÄBrowsers
+³   ³   ³   ³   ³               ÀÄÄÄmconfig
+³   ³   ³   ³   ÃÄÄÄGra
+³   ³   ³   ³   ³   ÃÄÄÄGra na czas_Data
+³   ³   ³   ³   ³   ³   ÃÄÄÄManaged
+³   ³   ³   ³   ³   ³   ÀÄÄÄResources
+³   ³   ³   ³   ³   ÀÄÄÄMonoBleedingEdge
+³   ³   ³   ³   ³       ÃÄÄÄEmbedRuntime
+³   ³   ³   ³   ³       ÀÄÄÄetc
+³   ³   ³   ³   ³           ÀÄÄÄmono
+³   ³   ³   ³   ³               ÃÄÄÄ2.0
+³   ³   ³   ³   ³               ³   ÀÄÄÄBrowsers
+³   ³   ³   ³   ³               ÃÄÄÄ4.0
+³   ³   ³   ³   ³               ³   ÀÄÄÄBrowsers
+³   ³   ³   ³   ³               ÃÄÄÄ4.5
+³   ³   ³   ³   ³               ³   ÀÄÄÄBrowsers
+³   ³   ³   ³   ³               ÀÄÄÄmconfig
+³   ³   ³   ³   ÃÄÄÄMiernik
+³   ³   ³   ³   ÀÄÄÄWirusShooter
+³   ³   ³   ³       ÃÄÄÄD¾emik_Data
+³   ³   ³   ³       ³   ÃÄÄÄManaged
+³   ³   ³   ³       ³   ÀÄÄÄResources
+³   ³   ³   ³       ÀÄÄÄMonoBleedingEdge
+³   ³   ³   ³           ÃÄÄÄEmbedRuntime
+³   ³   ³   ³           ÀÄÄÄetc
+³   ³   ³   ³               ÀÄÄÄmono
+³   ³   ³   ³                   ÃÄÄÄ2.0
+³   ³   ³   ³                   ³   ÀÄÄÄBrowsers
+³   ³   ³   ³                   ÃÄÄÄ4.0
+³   ³   ³   ³                   ³   ÀÄÄÄBrowsers
+³   ³   ³   ³                   ÃÄÄÄ4.5
+³   ³   ³   ³                   ³   ÀÄÄÄBrowsers
+³   ³   ³   ³                   ÀÄÄÄmconfig
+³   ³   ³   ÃÄÄÄKarty
+³   ³   ³   ÃÄÄÄMachineLearning
+³   ³   ³   ÃÄÄÄPrzygod¢wka
+³   ³   ³   ³   ÀÄÄÄUbrania dla bohater¢w
+³   ³   ³   ÀÄÄÄSiatk¢wka
+³   ³   ÃÄÄÄKotlin
+³   ³   ³   ÃÄÄÄApka
+³   ³   ³   ³   ÃÄÄÄsrc
+³   ³   ³   ³   ³   ÀÄÄÄpath
+³   ³   ³   ³   ³       ÀÄÄÄzasoby
+³   ³   ³   ³   ÀÄÄÄtarget
+³   ³   ³   ³       ÀÄÄÄmaven-status
+³   ³   ³   ³           ÀÄÄÄmaven-compiler-plugin
+³   ³   ³   ³               ÀÄÄÄcompile
+³   ³   ³   ³                   ÀÄÄÄdefault-compile
+³   ³   ³   ÀÄÄÄKotlinTornado
+³   ³   ³       ÃÄÄÄsrc
+³   ³   ³       ³   ÀÄÄÄmain
+³   ³   ³       ³       ÃÄÄÄkotlin
+³   ³   ³       ³       ³   ÀÄÄÄgrupa
+³   ³   ³       ³       ³       ÀÄÄÄprogramistow
+³   ³   ³       ³       ³           ÀÄÄÄproject
+³   ³   ³       ³       ³               ÀÄÄÄtornado
+³   ³   ³       ³       ³                   ÀÄÄÄviews
+³   ³   ³       ³       ÀÄÄÄresources
+³   ³   ³       ³           ÀÄÄÄimages
+³   ³   ³       ÀÄÄÄtarget
+³   ³   ³           ÃÄÄÄarchive-tmp
+³   ³   ³           ÃÄÄÄclasses
+³   ³   ³           ³   ÃÄÄÄgrupa
+³   ³   ³           ³   ³   ÀÄÄÄprogramistow
+³   ³   ³           ³   ³       ÀÄÄÄproject
+³   ³   ³           ³   ³           ÀÄÄÄtornado
+³   ³   ³           ³   ³               ÀÄÄÄviews
+³   ³   ³           ³   ÃÄÄÄimages
+³   ³   ³           ³   ÀÄÄÄMETA-INF
+³   ³   ³           ÃÄÄÄmaven-archiver
+³   ³   ³           ÀÄÄÄmaven-status
+³   ³   ³               ÀÄÄÄmaven-compiler-plugin
+³   ³   ³                   ÀÄÄÄcompile
+³   ³   ³                       ÀÄÄÄdefault-compile
+³   ³   ÃÄÄÄKurs
+³   ³   ÃÄÄÄLOLCODE
+³   ³   ÃÄÄÄMachine Learning
+³   ³   ÃÄÄÄObiektowy C++
+³   ³   ³   ÃÄÄÄEdytor kodu
+³   ³   ³   ÃÄÄÄEventy
+³   ³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³   ³   ÀÄÄÄDebug
+³   ³   ³   ³   ÀÄÄÄobj
+³   ³   ³   ³       ÀÄÄÄDebug
+³   ³   ³   ÃÄÄÄHello World
+³   ³   ³   ÃÄÄÄKalkulator
+³   ³   ³   ÃÄÄÄNotatnik
+³   ³   ³   ÃÄÄÄPrzyjaciele
+³   ³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³   ³   ÀÄÄÄDebug
+³   ³   ³   ³   ÀÄÄÄobj
+³   ³   ³   ³       ÀÄÄÄDebug
+³   ³   ³   ÃÄÄÄPr¢ba
+³   ³   ³   ÀÄÄÄQuiz
+³   ³   ³       ÃÄÄÄbin
+³   ³   ³       ³   ÀÄÄÄDebug
+³   ³   ³       ÀÄÄÄobj
+³   ³   ³           ÀÄÄÄDebug
+³   ³   ÃÄÄÄOKI
+³   ³   ³   ÃÄÄÄ.vscode
+³   ³   ³   ÃÄÄÄAlorytmy na OIJ
+³   ³   ³   ÃÄÄÄEOIJ
+³   ³   ³   ÃÄÄÄOI
+³   ³   ³   ³   ÀÄÄÄ.vscode
+³   ³   ³   ÃÄÄÄOIJ2etap
+³   ³   ³   ÃÄÄÄPING
+³   ³   ³   ³   ÀÄÄÄ.vscode
+³   ³   ³   ÃÄÄÄPotyczkiAlgorytmiczne
+³   ³   ³   ÀÄÄÄSparingi
+³   ³   ÃÄÄÄPython
+³   ³   ³   ÀÄÄÄCienie
+³   ³   ³       ÀÄÄÄ__pycache__
+³   ³   ÃÄÄÄRepozytoria
+³   ³   ³   ÃÄÄÄATFAA
+³   ³   ³   ³   ÃÄÄÄ.vscode
+³   ³   ³   ³   ÃÄÄÄadminFunc
+³   ³   ³   ³   ÃÄÄÄcommands
+³   ³   ³   ³   ÃÄÄÄfonts
+³   ³   ³   ³   ÀÄÄÄmodel
+³   ³   ³   ³       ÀÄÄÄkeyboard
+³   ³   ³   ÀÄÄÄPoster
+³   ³   ³       ÃÄÄÄPoster
+³   ³   ³       ³   ÃÄÄÄ.vs
+³   ³   ³       ³   ³   ÀÄÄÄPoster
+³   ³   ³       ³   ³       ÃÄÄÄDesignTimeBuild
+³   ³   ³       ³   ³       ÀÄÄÄv16
+³   ³   ³       ³   ÃÄÄÄbin
+³   ³   ³       ³   ³   ÀÄÄÄDebug
+³   ³   ³       ³   ³       ÀÄÄÄnetcoreapp3.1
+³   ³   ³       ³   ÀÄÄÄobj
+³   ³   ³       ³       ÀÄÄÄDebug
+³   ³   ³       ³           ÀÄÄÄnetcoreapp3.1
+³   ³   ³       ÃÄÄÄPosterMod
+³   ³   ³       ³   ÃÄÄÄ.vs
+³   ³   ³       ³   ³   ÀÄÄÄPosterMod
+³   ³   ³       ³   ³       ÃÄÄÄDesignTimeBuild
+³   ³   ³       ³   ³       ÀÄÄÄv16
+³   ³   ³       ³   ÃÄÄÄbin
+³   ³   ³       ³   ³   ÀÄÄÄDebug
+³   ³   ³       ³   ³       ÀÄÄÄnetcoreapp3.1
+³   ³   ³       ³   ÀÄÄÄobj
+³   ³   ³       ³       ÀÄÄÄDebug
+³   ³   ³       ³           ÀÄÄÄnetcoreapp3.1
+³   ³   ³       ÀÄÄÄPosterServer
+³   ³   ³           ÃÄÄÄ.vs
+³   ³   ³           ³   ÀÄÄÄPosterServer
+³   ³   ³           ³       ÃÄÄÄDesignTimeBuild
+³   ³   ³           ³       ÀÄÄÄv16
+³   ³   ³           ÃÄÄÄbin
+³   ³   ³           ³   ÀÄÄÄDebug
+³   ³   ³           ³       ÀÄÄÄnetcoreapp3.1
+³   ³   ³           ³           ÀÄÄÄruntimes
+³   ³   ³           ³               ÃÄÄÄunix
+³   ³   ³           ³               ³   ÀÄÄÄlib
+³   ³   ³           ³               ³       ÀÄÄÄnetcoreapp3.0
+³   ³   ³           ³               ÀÄÄÄwin
+³   ³   ³           ³                   ÀÄÄÄlib
+³   ³   ³           ³                       ÃÄÄÄnetcoreapp3.0
+³   ³   ³           ³                       ÀÄÄÄnetstandard2.0
+³   ³   ³           ÀÄÄÄobj
+³   ³   ³               ÀÄÄÄDebug
+³   ³   ³                   ÀÄÄÄnetcoreapp3.1
+³   ³   ÃÄÄÄRuby
+³   ³   ÃÄÄÄRust
+³   ³   ÃÄÄÄterminal
+³   ³   ³   ÀÄÄÄNowe
+³   ³   ÀÄÄÄVS
+³   ³       ÀÄÄÄHasˆownik
+³   ³           ÀÄÄÄHasˆownik
+³   ³               ÃÄÄÄbin
+³   ³               ³   ÃÄÄÄDebug
+³   ³               ³   ÀÄÄÄRelease
+³   ³               ÃÄÄÄobj
+³   ³               ³   ÀÄÄÄDebug
+³   ³               ³       ÀÄÄÄTempPE
+³   ³               ÃÄÄÄProperties
+³   ³               ÀÄÄÄResources
+³   ÀÄÄÄYoutube
+ÀÄÄÄmodel
+    ÀÄÄÄkeyboard
+        ÀÄÄÄfonts

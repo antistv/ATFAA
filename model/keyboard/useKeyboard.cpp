@@ -36,13 +36,6 @@ void KeybordFunc::keyboard() {
                 command.erase(command.length()-1, 1);
                 activeText.setString(countingEnter+activeTextS);
                 scrollEnter = countingEnter.length();
-            } else {
-                wrireTextS += "No letter to delete\n";
-                countingEnter += '\n';
-                activeTextS =path + ">";
-                activeText.setString(countingEnter+activeTextS);
-                wrireText.setString(wrireTextS);
-                scrollEnter = countingEnter.length();
             }
         } else if(event.text.unicode == 13){
             wrireTextS += activeTextS;

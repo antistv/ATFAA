@@ -14,52 +14,34 @@ void BasicFunc :: proc() {
     #ifdef WIN32
         system("tasklist > commands/system-proc.txt");
 
-        short howManyEnter=0;
         string line;
 	    fstream infile;
 	    infile.open ("commands/system-proc.txt" );
-        while(!infile.eof()) { // To get you all the lines.
-	        infile >> line; // Saves the line in STRING.
-            ++howManyEnter;
-            
-            if(howManyEnter == 6){
-                wrireTextS += line + '\n';
-                wrireText.setString(wrireTextS);
-                countingEnter += '\n';
-                activeTextS = path+">";
-                activeText.setString(countingEnter+activeTextS);
-                howManyEnter = 0;
-            } else {
-                wrireTextS += line + " ";
-            }
+
+        while(getline(infile, line)) {
+            wrireTextS += line + " " + '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
         }
-	    infile.close();
 
         infile.open ("commands/system-proc.txt", std::ifstream::out | std::ifstream::trunc );
         infile.close();
     #else
         system("ps -U root -u root -N > commands/system-proc.txt");
 
-        short howManyEnter=0;
         string line;
 	    fstream infile;
 	    infile.open ("commands/system-proc.txt" );
-        while(!infile.eof()) { // To get you all the lines.
-	        infile >> line; // Saves the line in STRING.
-            ++howManyEnter;
-            
-            if(howManyEnter == 4){
-                wrireTextS += line + '\n';
-                wrireText.setString(wrireTextS);
-                countingEnter += '\n';
-                activeTextS = path+">";
-                activeText.setString(countingEnter+activeTextS);
-                howManyEnter = 0;
-            } else {
-                wrireTextS += line + " ";
-            }
+
+        while(getline(infile, line)) {
+            wrireTextS += line + " " + '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
         }
-	    infile.close();
 
         infile.open ("commands/system-proc.txt", std::ifstream::out | std::ifstream::trunc );
         infile.close();
@@ -67,29 +49,18 @@ void BasicFunc :: proc() {
 }
 
 void BasicFunc :: help() {
-    ifstream f("help.txt");
-    if (f.is_open()){
-        string str;
+    string line;
+    fstream infile;
+    infile.open ("help.txt" );
 
-        f.seekg(0, ios::end);   
-        str.reserve(f.tellg());
-        f.seekg(0, std::ios::beg);
-
-        str.assign((istreambuf_iterator<char>(f)),
-                    istreambuf_iterator<char>());
-
-        int countingEnterinFile=0;
-        for(int i=0; i<str.length(); ++i) {
-            if(str[i] == '\n') ++countingEnterinFile;
-        }
-
-        wrireTextS += str + '\n';
+    while(getline(infile, line)) {
+        wrireTextS += line + " " + '\n';
         wrireText.setString(wrireTextS);
-        for(int i=0; i<=countingEnterinFile; ++i) countingEnter += '\n';
+        countingEnter += '\n';
         activeTextS = path+">";
         activeText.setString(countingEnter+activeTextS);
     }
-    f.close();
+    infile.close();
 }
 
 void BasicFunc :: lsAndDir() {
@@ -99,17 +70,15 @@ void BasicFunc :: lsAndDir() {
         string line;
 	    fstream infile;
 	    infile.open ("commands/system-proc.txt" );
-        while(!infile.eof()) { // To get you all the lines.
-	        infile >> line; // Saves the line in STRING.
-            cout << line << '\n';
 
-            wrireTextS += line + '\n';
+        while(getline(infile, line)) {
+            cout<<line<<endl;
+            wrireTextS += line + " " + '\n';
             wrireText.setString(wrireTextS);
             countingEnter += '\n';
             activeTextS = path+">";
             activeText.setString(countingEnter+activeTextS);
         }
-	    infile.close();
 
         infile.open ("commands/system-proc.txt", std::ifstream::out | std::ifstream::trunc );
         infile.close();
@@ -119,17 +88,15 @@ void BasicFunc :: lsAndDir() {
         string line;
 	    fstream infile;
 	    infile.open ("commands/system-proc.txt" );
-        while(!infile.eof()) { // To get you all the lines.
-	        infile >> line; // Saves the line in STRING.
-            cout << line << '\n';
 
-            wrireTextS += line + '\n';
+        while(getline(infile, line)) {
+            cout<<line<<endl;
+            wrireTextS += line + " " + '\n';
             wrireText.setString(wrireTextS);
             countingEnter += '\n';
             activeTextS = path+">";
             activeText.setString(countingEnter+activeTextS);
         }
-	    infile.close();
 
         infile.open ("commands/system-proc.txt", std::ifstream::out | std::ifstream::trunc );
         infile.close();
@@ -146,9 +113,34 @@ void BasicFunc :: clear() {
 
 void BasicFunc :: treeWin() {
     #ifdef WIN32
-        system(("tree " + path).c_str());
+        system(("tree " + path + " > commands/system-proc.txt").c_str());
+
+        string line;
+	    fstream infile;
+	    infile.open ("commands/system-proc.txt" );
+/*
+            wrireText.setString(L"aąeęiouót|\n");
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+*/
+        while(getline(infile, line)) {
+            cout<<line<<endl;
+            wrireTextS +=  line + " " + '\n';
+            wrireText.setString(wrireTextS);
+            countingEnter += '\n';
+            activeTextS = path+">";
+            activeText.setString(countingEnter+activeTextS);
+        }
+
+        infile.open ("commands/system-proc.txt", std::ifstream::out | std::ifstream::trunc );
+        infile.close();
     #else
-        cout<<"feature not available on linux"<<'\n';
+        wrireTextS += "Feature not available on linux"+ '\n';
+        wrireText.setString(wrireTextS);
+        countingEnter += '\n';
+        activeTextS = path+">";
+        activeText.setString(countingEnter+activeTextS);
     #endif
 }
 
