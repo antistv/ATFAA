@@ -132,7 +132,7 @@ void BasicFunc :: treeWin() {
 
 void BasicFunc :: terminal() {
     #ifdef WIN32
-        system(".\\sfml-app.exe")
+        system(".\\sfml-app.exe");
     #else
         system("./sfml-app");
     #endif
