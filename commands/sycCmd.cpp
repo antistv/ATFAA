@@ -4,8 +4,8 @@ extern string path;
 extern sf::Text activeText;
 extern sf::Text wrireText;
 extern string countingEnter;
-extern string activeTextS;
-extern string wrireTextS;
+extern sf::String activeTextS;
+extern sf::String wrireTextS;
 
 bool SysCommands::checkAndExecuteCmd(string cmd){
     system((cmd +  " > commands/system-proc.txt").c_str());
@@ -31,7 +31,6 @@ bool SysCommands::checkAndExecuteCmd(string cmd){
         activeText.setString(countingEnter+activeTextS);
     }
     infile.close();
-
     infile.open ("commands/system-proc.txt", std::ifstream::out | std::ifstream::trunc );
     infile.close();
 

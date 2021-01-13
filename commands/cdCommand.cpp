@@ -5,12 +5,13 @@ extern string path;
 extern sf::Text activeText;
 extern sf::Text wrireText;
 extern string countingEnter;
-extern string activeTextS;
-extern string wrireTextS;
+extern sf::String activeTextS;
+extern sf::String wrireTextS;
 
 void CDcom :: CDCommand(string container) {
-    popath = path;
     MainFunc obj;
+
+    popath = path;
     container = obj.clearTabsAndSpaces(container);
 
     if(container[0] == '.' && container[1] == '.') {

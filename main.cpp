@@ -1,8 +1,6 @@
 #include "main.hpp"
 
-//błąd usuwania komendy poza linijką
-
-string version = "0.0.2";
+string version = "0.0.3";
 string path = "";
 
 int main() {  

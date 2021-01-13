@@ -4,12 +4,12 @@
 extern sf::Text activeText;
 extern sf::Text wrireText;
 extern string countingEnter;
-extern string activeTextS;
-extern string wrireTextS;
+extern sf::String activeTextS;
+extern sf::String wrireTextS;
 extern sf::RectangleShape rect;
 extern sf::RenderWindow window;
 extern string path;
-extern sf::Color BgC;
+extern sf::Color background_color;
 
 void Colors :: Fcolor(string clr, string clr2, string clr3) {
     if(clr3!=""){
@@ -82,7 +82,7 @@ void Colors :: Bcolor(string clr, string clr2, string clr3) {
         if(is_number(clr) && is_number(clr2) && is_number(clr3) && clr.length()<=3 && clr2.length()<=3 && clr3.length()<=3){
             int r, g, b;
             r = stoi(clr); g = stoi(clr2); b = stoi(clr3);
-            BgC = sf::Color(r,g,b);
+            background_color = sf::Color(r,g,b);
         } else {
             wrireTextS += "This color is not exist\n";
             wrireText.setString(wrireTextS);
@@ -92,25 +92,25 @@ void Colors :: Bcolor(string clr, string clr2, string clr3) {
         }
     } else {
         if(clr == "red") {
-            BgC = sf::Color::Red;
+            background_color = sf::Color::Red;
         } else if(clr == "green") {
-            BgC = sf::Color::Green;
+            background_color = sf::Color::Green;
         } else if(clr == "yellow") {
-            BgC = sf::Color::Yellow;
+            background_color = sf::Color::Yellow;
         } else if(clr == "blue") {
-            BgC = sf::Color::Blue;
+            background_color = sf::Color::Blue;
         } else if(clr == "magenta" || clr == "violet" || clr == "purple") {
-            BgC = sf::Color::Magenta;
+            background_color = sf::Color::Magenta;
         } else if(clr == "cyan") {
-            BgC = sf::Color::Cyan;
+            background_color = sf::Color::Cyan;
         } else if(clr == "white") {
-            BgC = sf::Color::White;
+            background_color = sf::Color::White;
         } else if(clr == "orange") {
-            BgC = sf::Color(254,127,0);
+            background_color = sf::Color(254,127,0);
         } else if(clr == "black" || clr == "default" || clr == "standard") {
-            BgC = sf::Color::Black;
+            background_color = sf::Color::Black;
         } else if(clr == "infusiowy") {
-            BgC = sf::Color::Transparent;
+            background_color = sf::Color::Transparent;
         } else {
             wrireTextS += "Color not found\n";
             wrireText.setString(wrireTextS);

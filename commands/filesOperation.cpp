@@ -3,8 +3,8 @@
 extern sf::Text activeText;
 extern sf::Text wrireText;
 extern string countingEnter;
-extern string activeTextS;
-extern string wrireTextS;
+extern sf::String activeTextS;
+extern sf::String wrireTextS;
 extern string path;
 
 void FilesOperation :: createFolder(string nameFolder) {
