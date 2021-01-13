@@ -16,6 +16,9 @@ class BasicFunc{
         void clear();
         void treeWin();
         void terminal();
+    private:
+        string line;
+        fstream infile;
 };
 
 class CDcom {

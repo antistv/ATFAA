@@ -1,27 +1,31 @@
 #include "main-win.hpp"
+#include "../adminFunc/adminDef.hpp"
 
 sf::RenderWindow window(sf::VideoMode(1200, 720), "ATFAA TERMINAL", sf::Style::Default);
 
 string command = "";
 string countingEnter = "";
-int textSize=20;
+int textSize = 20;
 bool scrollOrNo=true;
-sf::Color BgC = sf::Color::Black;
-string activeTextS;
-string wrireTextS;
+sf::Color background_color = sf::Color::Black;
+sf::String activeTextS;
+sf::String wrireTextS;
 sf::Text activeText;
 sf::Text wrireText;
 sf::Font font;
 sf::Event event;
-sf::RectangleShape rect(sf::Vector2f(textSize/2, textSize));
-sf::View camera = window.getDefaultView();
+sf::RectangleShape rect;
+sf::View camera;
 
 extern string path;
 extern string version;
 
 void MainWindow::mainWindow(){
+    camera = window.getDefaultView();
+    rect.setSize(sf::Vector2f(textSize/2, textSize));
 
     KeybordFunc useKeyboard;
+    MainFunc utfFunction;
 
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(30);
@@ -36,14 +40,14 @@ void MainWindow::mainWindow(){
     activeText.setFillColor(sf::Color::Red);
     activeText.setCharacterSize(textSize);
     countingEnter += "\n\n\n";
-    activeTextS=path+"> ";
+    activeTextS=utfFunction.fromUtf8(path+"> ");
     activeText.setString(countingEnter + activeTextS);
     
     wrireText.setFont(font);
     wrireText.setStyle(sf::Text::Italic);
     wrireText.setFillColor(sf::Color::Red);
     wrireText.setCharacterSize(textSize);
-    wrireTextS="ATFAA Terminal " + version + '\n' + "Copyright (c) ATFAA Corporation. All rights reserved" + '\n' + "Type 'help' to get help." + '\n';
+    wrireTextS=utfFunction.fromUtf8("ATFAA Terminal " + version + '\n' + "Copyright (c) ATFAA Corporation. All rights reserved" + '\n' + "Type 'help' to get help." + '\n');
     wrireText.setString(wrireTextS);
     rect.setFillColor(sf::Color::Red);
     useKeyboard.rectMove();
@@ -54,9 +58,9 @@ void MainWindow::mainWindow(){
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
             
+            useKeyboard.keyboard();
             if(scrollOrNo) useKeyboard.moveCamera();
             useKeyboard.scrollMove();
-            useKeyboard.keyboard();
             useKeyboard.checkEdge();
 
             if (event.type == sf::Event::Closed){
@@ -65,7 +69,7 @@ void MainWindow::mainWindow(){
             }
 
         }
-        window.clear(BgC);
+        window.clear(background_color);
         window.draw(wrireText);
         window.draw(activeText);
         window.draw(rect);

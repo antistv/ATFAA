@@ -26,3 +26,9 @@ string MainFunc :: getStringCommand(string line) {
     }
     return command;
 }
+
+sf::String MainFunc :: fromUtf8(const string &in) {
+    basic_string<sf::Uint32> tmp;
+    sf::Utf8::toUtf32(in.begin(), in.end(), back_inserter(tmp));
+    return sf::String(tmp);
+}

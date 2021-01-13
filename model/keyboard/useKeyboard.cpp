@@ -1,8 +1,9 @@
 #include "useKeyboard.hpp"
 #include"../../commands/commands-Set.hpp"
+#include "../../adminFunc/adminDef.hpp"
 
-extern string activeTextS;
-extern string wrireTextS;
+extern sf::String activeTextS;
+extern sf::String wrireTextS;
 extern sf::Text activeText;
 extern sf::Text wrireText;
 extern sf::Event event;
@@ -17,22 +18,24 @@ extern bool scrollOrNo;
 
 extern string path;
 
+MainFunc FunctionUtf;
 SysCommands systemCommands;
 OperateCmd operation;
 int scrollEnter = 0;
 
 
-map<short, char> letterMap = { pair<short, char>(32, ' '),pair<short, char>(33, '!'),pair<short, char>(34, '"'),pair<short, char>(35, '#'),pair<short, char>(36, '$'),pair<short, char>(37, '%'),pair<short, char>(38, '&'),pair<short, char>(39, '\''),pair<short, char>(40, '('),pair<short, char>(41, ')'),pair<short, char>(42, '*'),pair<short, char>(43, '+'),pair<short, char>(44, ','),pair<short, char>(45, '-'),pair<short, char>(46, '.'),pair<short, char>(47, '/'),pair<short, char>(48, '0'),pair<short, char>(49, '1'),pair<short, char>(50, '2'),pair<short, char>(51, '3'),pair<short, char>(52, '4'),pair<short, char>(53, '5'),pair<short, char>(54, '6'),pair<short, char>(55, '7'),pair<short, char>(56, '8'),pair<short, char>(57, '9'),pair<short, char>(58, ':'),pair<short, char>(59, ';'),pair<short, char>(60, '<'),pair<short, char>(61, '='),pair<short, char>(62, '>'),pair<short, char>(63, '?'),pair<short, char>(64, '@')
-,pair<short, char>(65, 'A'), pair<short, char>(66, 'B'), pair<short, char>(67, 'C'), pair<short, char>(68, 'D'), pair<short, char>(69, 'E'), pair<short, char>(70, 'F'), pair<short, char>(71, 'G'), pair<short, char>(72, 'H'), pair<short, char>(73, 'I'), pair<short, char>(74, 'J'), pair<short, char>(75, 'K'), pair<short, char>(76, 'L'), pair<short, char>(77, 'M'), pair<short, char>(78, 'N'), pair<short, char>(79, 'O'), pair<short, char>(80, 'P'), pair<short, char>(81, 'Q'), pair<short, char>(82, 'R'), pair<short, char>(83, 'S'), pair<short, char>(84, 'T'), pair<short, char>(85, 'U'), pair<short, char>(86, 'V'), pair<short, char>(87, 'W'), pair<short, char>(88, 'X'), pair<short, char>(89, 'Y'), pair<short, char>(90, 'Z')
-,pair<short, char>(91, '['),pair<short, char>(92, '\\'),pair<short, char>(93, ']'),pair<short, char>(94, '^'),pair<short, char>(95, '_'),pair<short, char>(96, '`')
-,pair<short, char>(97, 'a'), pair<short, char>(98, 'b'), pair<short, char>(99, 'c'), pair<short, char>(100, 'd'), pair<short, char>(101, 'e'), pair<short, char>(102, 'f'), pair<short, char>(103, 'g'), pair<short, char>(104, 'h'), pair<short, char>(105, 'i'), pair<short, char>(106, 'j'), pair<short, char>(107, 'k'), pair<short, char>(108, 'l'), pair<short, char>(109, 'm'), pair<short, char>(110, 'n'), pair<short, char>(111, 'o'), pair<short, char>(112, 'p'), pair<short, char>(113, 'q'), pair<short, char>(114, 'r'), pair<short, char>(115, 's'), pair<short, char>(116, 't'), pair<short, char>(117, 'u'), pair<short, char>(118, 'v'), pair<short, char>(119, 'w'), pair<short, char>(120, 'x'), pair<short, char>(121, 'y'), pair<short, char>(122, 'z'), pair<short, char>(123, '{'), pair<short, char>(124, '|'), pair<short, char>(125, '}'), pair<short, char>(126, '~')
+map<short, string> letterMap = { pair<short, string>(32, " "),pair<short, string>(33, "!"),pair<short, string>(34, "%"),pair<short, string>(35, "#"),pair<short, string>(36, "$"),pair<short, string>(37, "%"),pair<short, string>(38, "&"),pair<short, string>(39, "\""),pair<short, string>(40, "("),pair<short, string>(41, ")"),pair<short, string>(42, "*"),pair<short, string>(43, "+"),pair<short, string>(44, ","),pair<short, string>(45, "-"),pair<short, string>(46, "."),pair<short, string>(47, "/"),pair<short, string>(48, "0"),pair<short, string>(49, "1"),pair<short, string>(50, "2"),pair<short, string>(51, "3"),pair<short, string>(52, "4"),pair<short, string>(53, "5"),pair<short, string>(54, "6"),pair<short, string>(55, "7"),pair<short, string>(56, "8"),pair<short, string>(57, "9"),pair<short, string>(58, ":"),pair<short, string>(59, ";"),pair<short, string>(60, "<"),pair<short, string>(61, "="),pair<short, string>(62, ">"),pair<short, string>(63, "?"),pair<short, string>(64, "@")
+,pair<short, string>(65, "A"), pair<short, string>(66, "B"), pair<short, string>(67, "C"), pair<short, string>(68, "D"), pair<short, string>(69, "E"), pair<short, string>(70, "F"), pair<short, string>(71, "G"), pair<short, string>(72, "H"), pair<short, string>(73, "I"), pair<short, string>(74, "J"), pair<short, string>(75, "K"), pair<short, string>(76, "L"), pair<short, string>(77, "M"), pair<short, string>(78, "N"), pair<short, string>(79, "O"), pair<short, string>(80, "P"), pair<short, string>(81, "Q"), pair<short, string>(82, "R"), pair<short, string>(83, "S"), pair<short, string>(84, "T"), pair<short, string>(85, "U"), pair<short, string>(86, "V"), pair<short, string>(87, "W"), pair<short, string>(88, "X"), pair<short, string>(89, "Y"), pair<short, string>(90, "Z")
+,pair<short, string>(91, "["),pair<short, string>(92, "\\"),pair<short, string>(93, "]"),pair<short, string>(94, "^"),pair<short, string>(95, "_"),pair<short, string>(96, "`")
+,pair<short, string>(97, "a"), pair<short, string>(98, "b"), pair<short, string>(99, "c"), pair<short, string>(100, "d"), pair<short, string>(101, "e"), pair<short, string>(102, "f"), pair<short, string>(103, "g"), pair<short, string>(104, "h"), pair<short, string>(105, "i"), pair<short, string>(106, "j"), pair<short, string>(107, "k"), pair<short, string>(108, "l"), pair<short, string>(109, "m"), pair<short, string>(110, "n"), pair<short, string>(111, "o"), pair<short, string>(112, "p"), pair<short, string>(113, "q"), pair<short, string>(114, "r"), pair<short, string>(115, "s"), pair<short, string>(116, "t"), pair<short, string>(117, "u"), pair<short, string>(118, "v"), pair<short, string>(119, "w"), pair<short, string>(120, "x"), pair<short, string>(121, "y"), pair<short, string>(122, "z"), pair<short, string>(123, "{"), pair<short, string>(124, "|"), pair<short, string>(125, "}"), pair<short, string>(126, "~"),
+pair<short, string>(261, "ą"),pair<short, string>(260, "Ą"),pair<short, string>(263, "ć"),pair<short, string>(262, "Ć"),pair<short, string>(281, "ę"), pair<short, string>(280, "Ę"),pair<short, string>(322, "ł"),pair<short, string>(321, "Ł"),pair<short, string>(324, "ń"),pair<short, string>(323, "Ń"),pair<short, string>(243, "ó"),pair<short, string>(211, "Ó"),pair<short, string>(347, "ś"),pair<short, string>(346, "Ś"),pair<short, string>(378, "ź"),pair<short, string>(377, "Ź"),pair<short, string>(380, "ż"),pair<short, string>(379, "Ż")
 };
 
 void KeybordFunc::keyboard() {
     if (event.type == sf::Event::TextEntered) {
         if(event.text.unicode == 8){
             if(command.length() > 0){
-                activeTextS.erase(activeTextS.length()-1, 1);
+                activeTextS.erase(activeTextS.getSize()-1, 1);
                 command.erase(command.length()-1, 1);
                 activeText.setString(countingEnter+activeTextS);
                 scrollEnter = countingEnter.length();
@@ -40,26 +43,26 @@ void KeybordFunc::keyboard() {
         } else if(event.text.unicode == 13){
             wrireTextS += activeTextS;
             wrireText.setString(wrireTextS);
-            wrireTextS += '\n';
-            countingEnter += '\n';
+            wrireTextS += "\n";
+            countingEnter += "\n";
             //Wysłanie komendy
                 if(!operation.runCommand(command)){
                     if(!systemCommands.checkAndExecuteCmd(command)){
-                        wrireTextS += "Command not found\n";
+                        wrireTextS += FunctionUtf.fromUtf8("Command not found\n");
                         wrireText.setString(wrireTextS);
-                        countingEnter += '\n';
-                        activeTextS = path+">";
+                        countingEnter += "\n";
+                        activeTextS= FunctionUtf.fromUtf8(path+">");
                         activeText.setString(countingEnter+activeTextS);
                     }
                 }
-                cout << command << "--" << '\n';
+                cout << command << "--" << "\n";
             //
-            activeTextS=path+"> ";
+            activeTextS= FunctionUtf.fromUtf8(path+">");
             command = "";
             activeText.setString(countingEnter+activeTextS);
             scrollEnter = countingEnter.length();
         } else {
-            activeTextS += letterMap[event.text.unicode];
+            activeTextS += FunctionUtf.fromUtf8(letterMap[event.text.unicode]);
             command += letterMap[event.text.unicode];
             activeText.setString(countingEnter+activeTextS);
             scrollEnter = countingEnter.length();
@@ -74,7 +77,7 @@ void KeybordFunc::keyboard() {
 
 void KeybordFunc::checkEdge(){
     if (activeText.getLocalBounds().width >= window.getSize().x-20 ) { 
-        wrireTextS += activeTextS+'\n';
+        wrireTextS += FunctionUtf.fromUtf8(activeTextS+'\n');
         wrireText.setString(wrireTextS);
         countingEnter += '\n';
         activeTextS = "";
