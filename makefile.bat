@@ -1,1 +1,1 @@
-g++ main.cpp main.hpp commands/*.cpp commands/*.hpp model/*.cpp model/*.hpp model/keyboard/*.cpp model/keyboard/*.hpp adminFunc/*.cpp adminFunc/*.hpp -o sfml-app.exe -lsfml-graphics -lsfml-window -lsfml-system
+g++ main.cpp main.hpp commands/*.cpp commands/*.hpp model/*.cpp model/*.hpp model/keyboard/*.cpp model/keyboard/*.hpp model/object/*.cpp model/object/*.hpp adminFunc/*.cpp adminFunc/*.hpp -o sfml-app.exe -lsfml-graphics -lsfml-window -lsfml-system
