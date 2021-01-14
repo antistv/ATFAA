@@ -34,4 +34,4 @@ COMMANDS:
   -->rnfile <old file name> <new file name>
         -renames file
   -->cmd 
-        -this command open new termianal
+        -this command open new terminal
