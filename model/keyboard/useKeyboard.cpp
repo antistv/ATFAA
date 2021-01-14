@@ -73,13 +73,13 @@ void KeybordFunc::keyboard() {
         scrollEnter = countingEnter.length();
         cursor.rectMove();
     } else {
-        activeTextS += FunctionUtf.fromUtf8(letterMap[event.text.unicode]);
-        command += letterMap[event.text.unicode];
+        activeTextS.insert(counter+path.length()+1, FunctionUtf.fromUtf8(letterMap[event.text.unicode]));
+        command.insert(counter, FunctionUtf.fromUtf8(letterMap[event.text.unicode]));
         saveBackCommand = command;
         ++counter;
         activeText.setString(countingEnter+activeTextS);
         scrollEnter = countingEnter.length();
-        cursor.rectMove();
+        rect.move(+font.getLineSpacing(textSize)/2 , 0);
     }
     
     scrollOrNo = true;
@@ -122,7 +122,7 @@ void KeybordFunc::rememberCmd(){
             cursor.rectMove();
         } else {
             cmdPointer = cmdSaver.size();
-            activeTextS =  FunctionUtf.fromUtf8(path+"> "+saveBackCommand);
+            activeTextS =  FunctionUtf.fromUtf8(path+">"+saveBackCommand);
             activeText.setString(countingEnter+activeTextS);
             command = saveBackCommand;
             cursor.rectMove();    
