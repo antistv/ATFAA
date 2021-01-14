@@ -1,0 +1,10 @@
+Co w 0.1.0 v
+
+- Dodanie zapamiętywania poprzednich komend                                                                      Yes   
+- Edytowanie comendy w dowlonym miejscu (naprawienie błędu z podwójną linią, kursor prawo lewo, edycja komendy)  No  //Został błąd oraz dodawanie literek
+- Zapisywanie preferencji użytkownika (zapamiętywanie koloru czcionki, koloru tła itd...)                        No
+- Dodanie wszytkich systemowych komendy typu g++..                                                               No
+- Dodanie nowych funkcji (zmiana wielkości czcionki, zmiana czcionki itd.)                                       No                                                                No
+- Dodanie kopiowania i wyklejania tekstu                                                                         No
+
+- Dystrybucja wersji beta (dodanie installek, redme itd..)                                                       No

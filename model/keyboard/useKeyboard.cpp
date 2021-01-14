@@ -1,6 +1,7 @@
 #include "useKeyboard.hpp"
 #include"../../commands/commands-Set.hpp"
 #include "../../adminFunc/adminDef.hpp"
+#include "../object/object-set.hpp"
 
 extern sf::String activeTextS;
 extern sf::String wrireTextS;
@@ -10,19 +11,23 @@ extern sf::Event event;
 extern string command;
 extern string countingEnter;
 extern sf::RenderWindow window;
-extern sf::RectangleShape rect;
 extern int textSize;
 extern sf::Font font;
-extern sf::View camera;
 extern bool scrollOrNo;
-
+extern sf::View camera;
 extern string path;
+extern int counter;
+extern sf::RectangleShape rect;
+
+int scrollEnter = 0;
+vector<string> cmdSaver;
+int cmdPointer=-1;
+string saveBackCommand;
 
 MainFunc FunctionUtf;
 SysCommands systemCommands;
 OperateCmd operation;
-int scrollEnter = 0;
-
+Cursor cursor;
 
 map<short, string> letterMap = { pair<short, string>(32, " "),pair<short, string>(33, "!"),pair<short, string>(34, "%"),pair<short, string>(35, "#"),pair<short, string>(36, "$"),pair<short, string>(37, "%"),pair<short, string>(38, "&"),pair<short, string>(39, "\""),pair<short, string>(40, "("),pair<short, string>(41, ")"),pair<short, string>(42, "*"),pair<short, string>(43, "+"),pair<short, string>(44, ","),pair<short, string>(45, "-"),pair<short, string>(46, "."),pair<short, string>(47, "/"),pair<short, string>(48, "0"),pair<short, string>(49, "1"),pair<short, string>(50, "2"),pair<short, string>(51, "3"),pair<short, string>(52, "4"),pair<short, string>(53, "5"),pair<short, string>(54, "6"),pair<short, string>(55, "7"),pair<short, string>(56, "8"),pair<short, string>(57, "9"),pair<short, string>(58, ":"),pair<short, string>(59, ";"),pair<short, string>(60, "<"),pair<short, string>(61, "="),pair<short, string>(62, ">"),pair<short, string>(63, "?"),pair<short, string>(64, "@")
 ,pair<short, string>(65, "A"), pair<short, string>(66, "B"), pair<short, string>(67, "C"), pair<short, string>(68, "D"), pair<short, string>(69, "E"), pair<short, string>(70, "F"), pair<short, string>(71, "G"), pair<short, string>(72, "H"), pair<short, string>(73, "I"), pair<short, string>(74, "J"), pair<short, string>(75, "K"), pair<short, string>(76, "L"), pair<short, string>(77, "M"), pair<short, string>(78, "N"), pair<short, string>(79, "O"), pair<short, string>(80, "P"), pair<short, string>(81, "Q"), pair<short, string>(82, "R"), pair<short, string>(83, "S"), pair<short, string>(84, "T"), pair<short, string>(85, "U"), pair<short, string>(86, "V"), pair<short, string>(87, "W"), pair<short, string>(88, "X"), pair<short, string>(89, "Y"), pair<short, string>(90, "Z")
@@ -31,47 +36,55 @@ map<short, string> letterMap = { pair<short, string>(32, " "),pair<short, string
 pair<short, string>(261, "ą"),pair<short, string>(260, "Ą"),pair<short, string>(263, "ć"),pair<short, string>(262, "Ć"),pair<short, string>(281, "ę"), pair<short, string>(280, "Ę"),pair<short, string>(322, "ł"),pair<short, string>(321, "Ł"),pair<short, string>(324, "ń"),pair<short, string>(323, "Ń"),pair<short, string>(243, "ó"),pair<short, string>(211, "Ó"),pair<short, string>(347, "ś"),pair<short, string>(346, "Ś"),pair<short, string>(378, "ź"),pair<short, string>(377, "Ź"),pair<short, string>(380, "ż"),pair<short, string>(379, "Ż")
 };
 
-void KeybordFunc::keyboard() {
-    if (event.type == sf::Event::TextEntered) {
-        if(event.text.unicode == 8){
-            if(command.length() > 0){
-                activeTextS.erase(activeTextS.getSize()-1, 1);
-                command.erase(command.length()-1, 1);
+void KeybordFunc::keyboard() { 
+    if(event.text.unicode == 8){
+        if(command.length() > 0){
+            if(counter > 0){
+                activeTextS.erase(counter+path.length(), 1);
+                command.erase(counter-1, 1);
+                --counter;
+                rect.move(-font.getLineSpacing(textSize)/2 , 0);
                 activeText.setString(countingEnter+activeTextS);
                 scrollEnter = countingEnter.length();
             }
-        } else if(event.text.unicode == 13){
-            wrireTextS += activeTextS;
-            wrireText.setString(wrireTextS);
-            wrireTextS += "\n";
-            countingEnter += "\n";
-            //Wysłanie komendy
-                if(!operation.runCommand(command)){
-                    if(!systemCommands.checkAndExecuteCmd(command)){
-                        wrireTextS += FunctionUtf.fromUtf8("Command not found\n");
-                        wrireText.setString(wrireTextS);
-                        countingEnter += "\n";
-                        activeTextS= FunctionUtf.fromUtf8(path+">");
-                        activeText.setString(countingEnter+activeTextS);
-                    }
+        }
+    } else if(event.text.unicode == 13){
+        counter = 0;
+        wrireTextS += activeTextS;
+        wrireText.setString(wrireTextS);
+        wrireTextS += "\n";
+        countingEnter += "\n";
+        //Wysłanie komendy
+            if(!operation.runCommand(command)){
+                if(!systemCommands.checkAndExecuteCmd(command)){
+                    wrireTextS += FunctionUtf.fromUtf8("Command not found\n");
+                    wrireText.setString(wrireTextS);
+                    countingEnter += "\n";
+                    activeTextS= FunctionUtf.fromUtf8(path+">");
+                    activeText.setString(countingEnter+activeTextS);
                 }
-                cout << command << "--" << "\n";
-            //
-            activeTextS= FunctionUtf.fromUtf8(path+">");
-            command = "";
-            activeText.setString(countingEnter+activeTextS);
-            scrollEnter = countingEnter.length();
-        } else {
-            activeTextS += FunctionUtf.fromUtf8(letterMap[event.text.unicode]);
-            command += letterMap[event.text.unicode];
-            activeText.setString(countingEnter+activeTextS);
-            scrollEnter = countingEnter.length();
-        }
-        scrollOrNo = true;
-        rectMove();
-        if(activeText.getLocalBounds().height < camera.getCenter().y-window.getSize().y/2 || activeText.getLocalBounds().height > camera.getCenter().y+window.getSize().y/2) {
-            camera.setCenter(window.getSize().x/2 , countingEnter.length()*font.getLineSpacing(textSize)-window.getSize().y / 2);
-        }
+            }
+        //
+        if(command != "") cmdSaver.push_back(command);
+        cmdPointer = cmdSaver.size();
+        activeTextS= FunctionUtf.fromUtf8(path+">");
+        command = "";
+        activeText.setString(countingEnter+activeTextS);
+        scrollEnter = countingEnter.length();
+        cursor.rectMove();
+    } else {
+        activeTextS += FunctionUtf.fromUtf8(letterMap[event.text.unicode]);
+        command += letterMap[event.text.unicode];
+        saveBackCommand = command;
+        ++counter;
+        activeText.setString(countingEnter+activeTextS);
+        scrollEnter = countingEnter.length();
+        cursor.rectMove();
+    }
+    
+    scrollOrNo = true;
+    if(activeText.getLocalBounds().height < camera.getCenter().y-window.getSize().y/2 || activeText.getLocalBounds().height > camera.getCenter().y+window.getSize().y/2) {
+        camera.setCenter(window.getSize().x/2 , countingEnter.length()*font.getLineSpacing(textSize)-window.getSize().y / 2);
     }
 }
 
@@ -85,27 +98,34 @@ void KeybordFunc::checkEdge(){
     }
 }
 
-void KeybordFunc::rectMove(){
-    rect.setPosition(activeText.getLocalBounds().width , countingEnter.length()*font.getLineSpacing(textSize));
-}
-
-void KeybordFunc::scrollMove(){
-    scrollOrNo = false;
-    if (event.type == sf::Event::MouseWheelScrolled) {
-        if(event.mouseWheelScroll.delta > 0) {
-            --scrollEnter;
-            rect.setPosition(activeText.getLocalBounds().width , scrollEnter*font.getLineSpacing(textSize));
-            camera.move(0.f , -font.getLineSpacing(textSize));
-    } else if(event.mouseWheelScroll.delta < 0) {
-            ++scrollEnter;
-            rect.setPosition(activeText.getLocalBounds().width , scrollEnter*font.getLineSpacing(textSize));
-            camera.move(0.f , font.getLineSpacing(textSize));
+void KeybordFunc::rememberCmd(){
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
+        if(cmdPointer > 0 && cmdSaver.size()>0){
+            --cmdPointer;
+            activeTextS =  FunctionUtf.fromUtf8(path+">"+cmdSaver[cmdPointer]);
+            activeText.setString(countingEnter+activeTextS);
+            command = cmdSaver[cmdPointer];
+            cursor.rectMove();
+        } else {
+            cmdPointer = cmdSaver.size();
+            activeTextS =  FunctionUtf.fromUtf8(path+">"+saveBackCommand);
+            activeText.setString(countingEnter+activeTextS);
+            command = saveBackCommand;
+            cursor.rectMove();    
         }
-    }
-}
-
-void KeybordFunc::moveCamera(){
-    if(activeText.getLocalBounds().height >= camera.getCenter().y + camera.getSize().y/2 -30) {
-        camera.move(0.f , font.getLineSpacing(textSize));
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
+        if(cmdPointer < cmdSaver.size()-1 && cmdSaver.size()>0) {
+            ++cmdPointer;
+            activeTextS =  FunctionUtf.fromUtf8(path+">"+cmdSaver[cmdPointer]);
+            activeText.setString(countingEnter+activeTextS);
+            command = cmdSaver[cmdPointer];
+            cursor.rectMove();
+        } else {
+            cmdPointer = cmdSaver.size();
+            activeTextS =  FunctionUtf.fromUtf8(path+"> "+saveBackCommand);
+            activeText.setString(countingEnter+activeTextS);
+            command = saveBackCommand;
+            cursor.rectMove();    
+        }
     }
 }

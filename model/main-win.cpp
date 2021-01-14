@@ -1,5 +1,6 @@
 #include "main-win.hpp"
 #include "../adminFunc/adminDef.hpp"
+#include "object/object-set.hpp"
 
 sf::RenderWindow window(sf::VideoMode(1200, 720), "ATFAA TERMINAL", sf::Style::Default);
 
@@ -16,6 +17,7 @@ sf::Font font;
 sf::Event event;
 sf::RectangleShape rect;
 sf::View camera;
+int counter=0;
 
 extern string path;
 extern string version;
@@ -26,6 +28,8 @@ void MainWindow::mainWindow(){
 
     KeybordFunc useKeyboard;
     MainFunc utfFunction;
+    Cursor cursor;
+    Camera cameraObj;
 
     window.setVerticalSyncEnabled(true);
     window.setFramerateLimit(30);
@@ -40,7 +44,7 @@ void MainWindow::mainWindow(){
     activeText.setFillColor(sf::Color::Red);
     activeText.setCharacterSize(textSize);
     countingEnter += "\n\n\n";
-    activeTextS=utfFunction.fromUtf8(path+"> ");
+    activeTextS=utfFunction.fromUtf8(path+">");
     activeText.setString(countingEnter + activeTextS);
     
     wrireText.setFont(font);
@@ -50,7 +54,7 @@ void MainWindow::mainWindow(){
     wrireTextS=utfFunction.fromUtf8("ATFAA Terminal " + version + '\n' + "Copyright (c) ATFAA Corporation. All rights reserved" + '\n' + "Type 'help' to get help." + '\n');
     wrireText.setString(wrireTextS);
     rect.setFillColor(sf::Color::Red);
-    useKeyboard.rectMove();
+    cursor.rectMove();
 //
     camera.setCenter(sf::Vector2f(window.getSize().x/2, window.getSize().y/2));
     window.setView(camera);
@@ -58,11 +62,16 @@ void MainWindow::mainWindow(){
     while (window.isOpen()) {
         while (window.pollEvent(event)) {
             
-            useKeyboard.keyboard();
-            if(scrollOrNo) useKeyboard.moveCamera();
-            useKeyboard.scrollMove();
-            useKeyboard.checkEdge();
+            if (event.type == sf::Event::TextEntered) {
+                useKeyboard.keyboard();
+                useKeyboard.checkEdge();
+            }
+            if(scrollOrNo) cameraObj.moveCamera();
+            cameraObj.scrollMove();
+            useKeyboard.rememberCmd();
+            cursor.arrowMove();
 
+            //Zamknięcie okna
             if (event.type == sf::Event::Closed){
                 window.close();
                 break;

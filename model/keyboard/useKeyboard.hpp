@@ -11,7 +11,5 @@ class KeybordFunc{
     public:
         void keyboard();
         void checkEdge();
-        void rectMove();
-        void scrollMove();
-        void moveCamera();
+        void rememberCmd();
 };
