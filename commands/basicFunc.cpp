@@ -2,18 +2,9 @@
 #include "../model/main-win.hpp"
 #include "../adminFunc/adminDef.hpp"
 
-extern string path;
-extern sf::Text activeText;
-extern sf::Text wrireText;
-extern string countingEnter;
-extern sf::String activeTextS;
-extern sf::String wrireTextS;
-
-extern string path;
-
 MainFunc Function; 
 
-void BasicFunc :: proc() {
+void BasicFunc::proc(string &path, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS) {
     #ifdef WIN32
         system("tasklist > commands/system-proc.txt");
 
@@ -47,7 +38,7 @@ void BasicFunc :: proc() {
     #endif
 }
 
-void BasicFunc :: help() {
+void BasicFunc::help(string &path, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS) {
     infile.open ("help.txt" );
 
     while(getline(infile, line)) {
@@ -60,7 +51,7 @@ void BasicFunc :: help() {
     infile.close();
 }
 
-void BasicFunc :: lsAndDir() {
+void BasicFunc::lsAndDir(string &path, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS) {
     #ifdef WIN32
         system(("dir " + path + " > commands/system-proc.txt").c_str());
 
@@ -95,7 +86,7 @@ void BasicFunc :: lsAndDir() {
     #endif
 }
 
-void BasicFunc :: clear() {
+void BasicFunc::clear(string &path, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS) {
     wrireTextS = "";
     countingEnter= "";
     wrireText.setString(wrireTextS);
@@ -103,7 +94,7 @@ void BasicFunc :: clear() {
     activeText.setString(countingEnter+activeTextS);
 }
 
-void BasicFunc :: treeWin() {
+void BasicFunc::treeWin(string &path, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS) {
     #ifdef WIN32
         system(("tree " + path + " > commands/system-proc.txt").c_str());
 
@@ -130,7 +121,7 @@ void BasicFunc :: treeWin() {
     #endif
 }
 
-void BasicFunc :: terminal() {
+void BasicFunc::terminal() {
     #ifdef WIN32
         system(".\\sfml-app.exe");
     #else

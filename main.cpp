@@ -17,7 +17,7 @@ int main() {
     #endif
 
     MainWindow window;
-    window.mainWindow();
+    window.mainWindow(path, version);
 
     return 0;   
  }

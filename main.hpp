@@ -1,3 +1,4 @@
+#pragma once
 #include "commands/commands-Set.hpp"
 #include "model/main-win.hpp"
 #include "adminFunc/adminDef.hpp"

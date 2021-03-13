@@ -1,14 +1,7 @@
 #include "commands-Set.hpp"
 #include "../adminFunc/adminDef.hpp"
 
-extern string path;
-extern sf::Text activeText;
-extern sf::Text wrireText;
-extern string countingEnter;
-extern sf::String activeTextS;
-extern sf::String wrireTextS;
-
-void CDcom :: CDCommand(string container) {
+void CDcom::CDCommand(string container, string &path, sf::Text &activeText, sf::Text &wrireText, string &countingEnter,sf::String &activeTextS, sf::String &wrireTextS) {
     MainFunc obj;
 
     popath = path;

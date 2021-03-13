@@ -1,13 +1,6 @@
 #include "commands-Set.hpp"
 
-extern sf::Text activeText;
-extern sf::Text wrireText;
-extern string countingEnter;
-extern sf::String activeTextS;
-extern sf::String wrireTextS;
-extern string path;
-
-void FilesOperation :: createFolder(string nameFolder) {
+void FilesOperation::createFolder(string nameFolder, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS, string &path) {
     #ifdef WIN32
         system(("mkdir " + path + "\\" + nameFolder).c_str());
         wrireTextS += "Directories are created\n";
@@ -34,7 +27,7 @@ void FilesOperation :: createFolder(string nameFolder) {
     #endif
 }
 
-void FilesOperation :: deleteFolder(string nameFolderS) {
+void FilesOperation :: deleteFolder(string nameFolderS, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS, string &path) {
     #ifdef WIN32
         system(("rmdir /s /q " + path + "\\" + nameFolderS).c_str());
         wrireTextS += "Directories are removed\n";
@@ -61,7 +54,7 @@ void FilesOperation :: deleteFolder(string nameFolderS) {
     #endif
 }
 
-void FilesOperation :: renameDir(string nameFolderToRename, string newNameFolder){
+void FilesOperation :: renameDir(string nameFolderToRename, string newNameFolder, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS, string &path){
     #ifdef WIN32
         system(("rename " + path + "\\" + nameFolderToRename + " " + newNameFolder).c_str());
         wrireTextS += "Directories are renamed\n";
@@ -90,7 +83,7 @@ void FilesOperation :: renameDir(string nameFolderToRename, string newNameFolder
 
 //FILE
 
-void FilesOperation :: createFile(string nameFile) {
+void FilesOperation :: createFile(string nameFile, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS, string &path) {
     #ifdef WIN32
         //system(("mkdir " + path + "\\" + nameFile).c_str());
         ofstream outfile (path+"\\"+nameFile);
@@ -119,7 +112,7 @@ void FilesOperation :: createFile(string nameFile) {
     #endif
 }
 
-void FilesOperation :: deleteFile(string nameFileS) {
+void FilesOperation :: deleteFile(string nameFileS, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS, string &path) {
     #ifdef WIN32
         system(("del /f " + path + "\\" + nameFileS).c_str());
         wrireTextS += "File are removed\n";
@@ -146,7 +139,7 @@ void FilesOperation :: deleteFile(string nameFileS) {
     #endif
 }
 
-void FilesOperation :: renameFile(string fileToRename, string newNameOfFile){
+void FilesOperation :: renameFile(string fileToRename, string newNameOfFile, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS, string &path){
     #ifdef WIN32
         system(("rename " + path + "\\" + fileToRename + " " + newNameOfFile).c_str());
         wrireTextS += "File are renamed\n";

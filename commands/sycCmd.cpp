@@ -1,13 +1,6 @@
 #include "commands-Set.hpp"
 
-extern string path;
-extern sf::Text activeText;
-extern sf::Text wrireText;
-extern string countingEnter;
-extern sf::String activeTextS;
-extern sf::String wrireTextS;
-
-bool SysCommands::checkAndExecuteCmd(string cmd){
+bool SysCommands::checkAndExecuteCmd(string cmd, string &path, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS){
     system((cmd +  " > commands/system-proc.txt").c_str());
 
 	ifstream ifFile;
@@ -37,6 +30,6 @@ bool SysCommands::checkAndExecuteCmd(string cmd){
     return true;
 }
 
-bool SysCommands::isEmpty(std::ifstream& pFile) {
+bool SysCommands::isEmpty(std::ifstream &pFile) {
     return pFile.peek() == std::ifstream::traits_type::eof();
 }
