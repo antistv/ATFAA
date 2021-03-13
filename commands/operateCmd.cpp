@@ -1,15 +1,6 @@
 #include "../main.hpp"
 
-extern sf::Text activeText;
-extern sf::Text wrireText;
-extern string countingEnter;
-extern sf::String activeTextS;
-extern sf::String wrireTextS;
-extern sf::RectangleShape rect;
-extern string version;
-extern string path;
-
-bool OperateCmd::runCommand(string cmd){
+bool OperateCmd::runCommand(string cmd, sf::Text &activeText,sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS, sf::RectangleShape &rect, string &version, string &path, sf::Color &background_color){
     MainFunc mainFunc;
     BasicFunc basicFunc;
     CDcom cd;
@@ -36,7 +27,7 @@ bool OperateCmd::runCommand(string cmd){
             arg3 = mainFunc.getStringCommand(cmd);
             cmd.erase(0, arg2.length()+1); 
 
-            colorFunc.Fcolor(arg, arg2, arg3);
+            colorFunc.Fcolor(arg, arg2, arg3, activeText, wrireText, countingEnter, activeTextS, wrireTextS, rect, path);
         } else if(arg == "bcolor"){
             cmd = mainFunc.clearTabsAndSpaces(cmd);
             arg = mainFunc.getStringCommand(cmd);
@@ -46,33 +37,33 @@ bool OperateCmd::runCommand(string cmd){
             arg3 = mainFunc.getStringCommand(cmd);
             cmd.erase(0, arg2.length()+1);   
 
-            colorFunc.Bcolor(arg, arg2, arg3);
+            colorFunc.Bcolor(arg, arg2, arg3, activeText, wrireText, countingEnter, activeTextS, wrireTextS, path, background_color);
         } else if(arg == "clear" || arg == "cls") {  
-            basicFunc.clear();
+            basicFunc.clear(path, activeText, wrireText, countingEnter, activeTextS, wrireTextS);
         } else if(arg == "cd") {
-            cd.CDCommand(cmd);
+            cd.CDCommand(cmd, path, activeText, wrireText, countingEnter, activeTextS, wrireTextS);
         } else if(arg == "help"){
-            basicFunc.help();
+            basicFunc.help(path, activeText, wrireText, countingEnter, activeTextS, wrireTextS);
         } else if(arg == "dir" || arg == "ls" || arg == "list") {
-            basicFunc.lsAndDir();
+            basicFunc.lsAndDir(path, activeText, wrireText, countingEnter, activeTextS, wrireTextS);
         } else if(arg == "tree") {
-            basicFunc.treeWin();
+            basicFunc.treeWin(path, activeText, wrireText, countingEnter, activeTextS, wrireTextS);
         } else if(arg == "version" || arg == "v"){
             cout << "Version --> "<< version << '\n';
         } else if(arg == "proc") {
-            basicFunc.proc();
+            basicFunc.proc(path, activeText, wrireText, countingEnter, activeTextS, wrireTextS);
         } else if(arg == "mkdir"){
             cmd = mainFunc.clearTabsAndSpaces(cmd);
             arg = mainFunc.getStringCommand(cmd);
             cmd.erase(0, arg.length()+1); 
         
-            filesOperationFunc.createFolder(arg);
+            filesOperationFunc.createFolder(arg, activeText, wrireText, countingEnter, activeTextS, wrireTextS, path);
         } else if(arg == "deldir"){
             cmd = mainFunc.clearTabsAndSpaces(cmd);
             arg = mainFunc.getStringCommand(cmd);
             cmd.erase(0, arg.length()+1); 
         
-            filesOperationFunc.deleteFolder(arg);
+            filesOperationFunc.deleteFolder(arg, activeText, wrireText, countingEnter, activeTextS, wrireTextS, path);
         } else if(arg == "rndir"){
             cmd = mainFunc.clearTabsAndSpaces(cmd);
             arg = mainFunc.getStringCommand(cmd);
@@ -80,19 +71,19 @@ bool OperateCmd::runCommand(string cmd){
             arg2 = mainFunc.getStringCommand(cmd);
             cmd.erase(0, arg2.length()+1); 
 
-            filesOperationFunc.renameDir(arg, arg2);
+            filesOperationFunc.renameDir(arg, arg2, activeText, wrireText, countingEnter, activeTextS, wrireTextS, path);
         } else if(arg == "mkfile"){
             cmd = mainFunc.clearTabsAndSpaces(cmd);
             arg = mainFunc.getStringCommand(cmd);
             cmd.erase(0, arg.length()+1); 
         
-            filesOperationFunc.createFile(arg);
+            filesOperationFunc.createFile(arg, activeText, wrireText, countingEnter, activeTextS, wrireTextS, path);
         } else if(arg == "delfile"){
             cmd = mainFunc.clearTabsAndSpaces(cmd);
             arg = mainFunc.getStringCommand(cmd);
             cmd.erase(0, arg.length()+1); 
         
-            filesOperationFunc.deleteFile(arg);
+            filesOperationFunc.deleteFile(arg, activeText, wrireText, countingEnter, activeTextS, wrireTextS, path);
         } else if(arg == "rnfile"){
             cmd = mainFunc.clearTabsAndSpaces(cmd);
             arg = mainFunc.getStringCommand(cmd);
@@ -100,7 +91,7 @@ bool OperateCmd::runCommand(string cmd){
             arg2 = mainFunc.getStringCommand(cmd);
             cmd.erase(0, arg2.length()+1); 
 
-            filesOperationFunc.renameFile(arg, arg2);
+            filesOperationFunc.renameFile(arg, arg2, activeText, wrireText, countingEnter, activeTextS, wrireTextS, path);
         } else if(arg == "cmd" || arg == "terminal" || arg == "console") {
             basicFunc.terminal();
         } else {

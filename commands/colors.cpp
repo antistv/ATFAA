@@ -1,17 +1,7 @@
 #include "commands-Set.hpp"
 #include <SFML/Graphics.hpp>
 
-extern sf::Text activeText;
-extern sf::Text wrireText;
-extern string countingEnter;
-extern sf::String activeTextS;
-extern sf::String wrireTextS;
-extern sf::RectangleShape rect;
-extern sf::RenderWindow window;
-extern string path;
-extern sf::Color background_color;
-
-void Colors :: Fcolor(string clr, string clr2, string clr3) {
+void Colors :: Fcolor(string clr, string clr2, string clr3, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS, sf::RectangleShape &rect, string &path) {
     if(clr3!=""){
         if(is_number(clr) && is_number(clr2) && is_number(clr3) && clr.length()<=3 && clr2.length()<=3 && clr3.length()<=3){
             int r, g, b;
@@ -77,7 +67,7 @@ void Colors :: Fcolor(string clr, string clr2, string clr3) {
     }
 }
 
-void Colors :: Bcolor(string clr, string clr2, string clr3) {
+void Colors :: Bcolor(string clr, string clr2, string clr3, sf::Text &activeText, sf::Text &wrireText, string &countingEnter, sf::String &activeTextS, sf::String &wrireTextS, string &path, sf::Color &background_color) {
     if(clr3!=""){
         if(is_number(clr) && is_number(clr2) && is_number(clr3) && clr.length()<=3 && clr2.length()<=3 && clr3.length()<=3){
             int r, g, b;
